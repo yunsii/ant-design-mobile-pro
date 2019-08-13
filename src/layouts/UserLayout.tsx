@@ -1,7 +1,7 @@
 // import DocumentTitle from 'react-document-title';
 import React, { Fragment } from 'react';
 import { connect } from 'dva';
-import {} from 'antd-mobile'
+import { } from 'antd-mobile'
 // import { formatMessage } from 'umi-plugin-react/locale';
 import Footer from './Footer';
 import CustomIcon from '@/components/CustomIcon';
@@ -13,7 +13,7 @@ export interface UserLayoutProps {
 
 const copyright = (
   <Fragment>
-    Copyright <CustomIcon type="copyright" /> 2019 <a href="https://github.com/theprimone">theprimone</a> 出品
+    Copyright <CustomIcon type="copyright" /> 2019 <a href="https://github.com/theprimone" target="_blank" style={{ color: '#fff', textDecoration: 'underline' }}>theprimone</a> 出品
   </Fragment>
 );
 
