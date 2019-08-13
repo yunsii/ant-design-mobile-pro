@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-// import Link from 'umi/link';
+import router from 'umi/router';
 import { connect } from 'dva';
 import { Dispatch, ConnectState } from '@/models/connect';
+import { getAuthority } from '@/utils/authority';
 // import { formatMessage } from 'umi-plugin-react/locale';
 
 export interface BasicLayoutProps {
@@ -10,17 +11,13 @@ export interface BasicLayoutProps {
 
 const BasicLayout: React.FC<BasicLayoutProps> = props => {
   const { dispatch, children } = props;
-  /**
-   * constructor
-   */
-
   useEffect(() => {
+    if (getAuthority()[0] !== 'admin') {
+      router.push('/user/login');
+    }
     if (dispatch) {
       dispatch({
         type: 'user/fetchCurrent',
-      });
-      dispatch({
-        type: 'settings/getSetting',
       });
     }
   }, []);
