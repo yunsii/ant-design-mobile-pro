@@ -46,6 +46,12 @@ class Login extends React.PureComponent<LoginProps> {
     })
   }
 
+  handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      this.handleSubmit();
+    }
+  }
+
   render() {
     const icon = (
       <div className={styles.logoWrapper}>
@@ -68,6 +74,7 @@ class Login extends React.PureComponent<LoginProps> {
               autoComplete='off'
               labelNumber={1}
               {...getFieldProps('username')}
+              clear={true}
             >
               <CustomIcon type="user" style={iconStyle} />
             </InputItem>
@@ -77,6 +84,8 @@ class Login extends React.PureComponent<LoginProps> {
               autoComplete='off'
               labelNumber={1}
               {...getFieldProps('password')}
+              clear={true}
+              onKeyPress={this.handleKeyPress}
             >
               <CustomIcon type="password" style={iconStyle} />
             </InputItem>
