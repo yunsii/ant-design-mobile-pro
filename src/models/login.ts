@@ -1,6 +1,7 @@
 import { routerRedux } from 'dva/router';
+import { Toast } from 'antd-mobile';
 import { fakeAccountLogin } from '@/services/api';
-
+import { setAuthority } from '@/utils/authority';
 export interface LoginState {
   status?: any;
 }
@@ -19,9 +20,11 @@ export default {
         type: 'changeLoginStatus',
         payload: response,
       });
-      // Login successfully
+      setAuthority(response.currentAuthority);
       if (response.status === 'ok') {
         yield put(routerRedux.replace('/'));
+      } else {
+        Toast.fail('帐号或密码错误！')
       }
     },
 
