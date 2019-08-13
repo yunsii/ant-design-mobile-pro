@@ -2,7 +2,7 @@ import { AnyAction } from 'redux';
 import { EffectsCommandMap } from 'dva';
 import { RouterTypes } from 'umi';
 // import { GlobalModelState } from './global';
-import { DefaultSettings as SettingModelState } from '../../config/defaultSettings';
+import { DefaultSettings as SettingModelState } from '../defaultSettings';
 import { UserModelState } from './user';
 
 export { /* GlobalModelState, */ SettingModelState, UserModelState };

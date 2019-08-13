@@ -1,8 +1,8 @@
 import { IConfig, IPlugin } from 'umi-types';
 import pageRoutes from './router.config';
 import webpackPlugin from './plugin.config';
-import defaultSettings from './defaultSettings';
 
+const defaultSettings = require('../src/defaultSettings');
 const { primaryColor } = defaultSettings;
 
 // ref: https://umijs.org/config/
@@ -93,6 +93,6 @@ export default {
   ],
   theme: {
     'brand-primary': primaryColor,
-    'brand-primary-tap': '#42dfe1',
+    'brand-primary-tap': '#37dddd',
   },
 } as IConfig;
