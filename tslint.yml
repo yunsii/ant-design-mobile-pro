@@ -10,3 +10,4 @@ rules:
   no-debugger: true
   no-reference: true
   jsx-no-lambda: false
+  jsx-no-multiline-js: false
