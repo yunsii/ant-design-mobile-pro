@@ -4,6 +4,7 @@ import { RouterTypes } from 'umi';
 // import { GlobalModelState } from './global';
 import { DefaultSettings as SettingModelState } from '../defaultSettings';
 import { UserModelState } from './user';
+import { LoginState } from './login';
 
 export { /* GlobalModelState, */ SettingModelState, UserModelState };
 
@@ -23,6 +24,7 @@ export interface ConnectState {
   loading: Loading;
   settings: SettingModelState;
   user: UserModelState;
+  login: LoginState;
 }
 
 export type Effect = (
