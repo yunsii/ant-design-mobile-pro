@@ -1,0 +1,29 @@
+@import "~antd-mobile/dist/antd-mobile.less";
+
+.globalFooter {
+  margin: 48px 0 24px 0;
+  padding: 0 16px;
+  text-align: center;
+
+  .links {
+    margin-bottom: 8px;
+
+    a {
+      color: @color-text-secondary;
+      transition: all 0.3s;
+
+      &:not(:last-child) {
+        margin-right: 40px;
+      }
+
+      &:hover {
+        color: @color-text-base;
+      }
+    }
+  }
+
+  .copyright {
+    color: @color-text-base-inverse;
+    font-size: @font-size-base;
+  }
+}
