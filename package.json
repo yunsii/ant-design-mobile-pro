@@ -17,6 +17,9 @@
     "dva": "^2.6.0-beta.6",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
+    "nzh": "^1.0.4",
+    "qs": "^6.7.0",
+    "rc-form": "^2.4.8",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "umi-request": "^1.2.2"
@@ -37,6 +40,7 @@
     "husky": "^0.14.3",
     "lint-staged": "^7.2.2",
     "react-test-renderer": "^16.7.0",
+    "roadhog-api-doc": "^1.1.2",
     "tslint": "^5.12.0",
     "tslint-eslint-rules": "^5.4.0",
     "tslint-react": "^3.6.0",
