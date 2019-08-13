@@ -1,4 +1,5 @@
 const defaultSettings = require('./defaultSettings');
+
 const { iconfontUrl } = defaultSettings;
 
 function addScriptToHead(url: string) {
