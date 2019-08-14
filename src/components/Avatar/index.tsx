@@ -33,9 +33,9 @@ const Avatar = (props: Props) => {
   const sizeStyle: React.CSSProperties =
     typeof size === 'number'
       ? {
-        width: size,
-        height: size,
-        lineHeight: `${size}px`,
+        width: `${size / 100}rem`,
+        height: `${size / 100}rem`,
+        lineHeight: `${size / 100}rem`,
         fontSize: 18,
       }
       : {};

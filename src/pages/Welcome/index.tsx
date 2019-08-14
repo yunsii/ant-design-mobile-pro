@@ -13,9 +13,8 @@ import styles from './index.less';
 
 const MenuIcon = (props) => {
   const { type, color } = props;
-  return <CustomIcon type={type.split('-')[1]} style={{ color, fontSize: 40 }} />
+  return <CustomIcon type={type.split('-')[1]} style={{ color, fontSize: '.4rem' }} />
 }
-
 
 const statistics = [
   {
@@ -41,7 +40,7 @@ const statistics = [
         </p>
       </Fragment>
     ),
-    value: 45,
+    value: 12,
     align: 'center',
   },
   {
@@ -54,7 +53,7 @@ const statistics = [
         </p>
       </Fragment>
     ),
-    value: 45,
+    value: 2,
     align: 'center',
   },
   {
@@ -67,7 +66,7 @@ const statistics = [
         </p>
       </Fragment>
     ),
-    value: 45,
+    value: 18,
     align: 'center',
   },
 ]
@@ -147,7 +146,7 @@ export default class Center extends React.PureComponent<CenterProps> {
         </header>
         <div className={styles.monitor}>
           <Paper clearPadding>
-            <Flex>
+            <Flex justify='center' style={{ width: '100%', height: '100%'}}>
               {statistics.map((item) => {
                 return (
                   <Flex.Item key={item.key}>
