@@ -15,10 +15,10 @@ const Statistics = (props: Props) => {
     style = { textAlign: 'center' };
   }
   return (
-    <div>
+    <>
       <div className={styles.item} style={style}>{title}</div>
       <p style={style}>{value}</p>
-    </div>
+    </>
   );
 };
 
