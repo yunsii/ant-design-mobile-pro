@@ -1,6 +1,7 @@
 import { IConfig, IPlugin } from 'umi-types';
 import pageRoutes from './router.config';
 import webpackPlugin from './plugin.config';
+import pxToViewPort from 'postcss-px-to-viewport';
 const defaultSettings = require('../src/defaultSettings');
 
 const { primaryColor } = defaultSettings;
@@ -90,6 +91,14 @@ export default {
       //style: 'css',
       style: true, // use less for customized theme
     }],
+  ],
+  // reference: https://umijs.org/zh/config/#extrapostcssplugins
+  extraPostCSSPlugins: [
+    // reference: https://github.com/evrone/postcss-px-to-viewport/blob/master/README_CN.md
+    pxToViewPort({
+      viewportWidth: 375,
+      mediaQuery: false,
+    }),
   ],
   theme: {
     'brand-primary': primaryColor,
