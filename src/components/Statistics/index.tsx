@@ -17,7 +17,7 @@ const Statistics = (props: Props) => {
   return (
     <>
       <div className={styles.item} style={style}>{title}</div>
-      <p style={style}>{value}</p>
+      <p className={styles.value} style={style}>{value}</p>
     </>
   );
 };
