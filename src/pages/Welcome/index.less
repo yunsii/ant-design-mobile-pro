@@ -1,0 +1,83 @@
+@import '~antd-mobile/dist/antd-mobile.less';
+
+@user-info-padding: 4px;
+@user-info-left: 80px;
+@user-info-right: @user-info-padding + 8px;
+
+@monitor-height: 140px;
+@monitor-over-height: 50px;
+
+.hero {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to bottom, @brand-primary 0 30%, white 30% 100%);
+}
+
+.header {
+  position: relative;
+  width: 100%;
+  height: 30%;
+
+  .userInfo {
+    position: relative;
+    top: calc(50% - 60px);
+    width: 100%;
+    height: 80px;
+    padding: 0 @user-info-padding;
+
+    .username {
+      position: absolute;
+      left: @user-info-left;
+      bottom: 35px;
+      font-size: 18px;
+      color: white;
+    }
+
+    .lastLogin {
+      position: absolute;
+      left: @user-info-left;
+      bottom: 7px;
+      font-size: 18px;
+      color: white;
+    }
+
+    .updatePassword {
+      position: absolute;
+      right: @user-info-right;
+      bottom: 35px;
+      color: white;
+      border: 1px solid white;
+      height: 1.4em;
+      line-height: 1.4em;
+      background: unset;
+      border-radius: 0.7em;
+      width: 6em;
+    }
+
+    .exit {
+      position: absolute;
+      right: @user-info-right;
+      bottom: 4px;
+      color: white;
+      border: 1px solid white;
+      height: 1.4em;
+      line-height: 1.4em;
+      background: unset;
+      border-radius: 0.7em;
+      width: 6em;
+    }
+  }
+}
+
+.monitor {
+  position: absolute;
+  top: calc(30% - @monitor-over-height);
+  width: 100%;
+  height: @monitor-height;
+  padding: 0 16px;
+  z-index: 1;
+}
+
+.menu {
+  padding-top: @monitor-height - @monitor-over-height;
+}
