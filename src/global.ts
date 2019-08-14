@@ -31,8 +31,6 @@ function setRem(designWidth?: number, baseFontSize?: number) {
     window.document.head.appendChild(metaEl);
   }
   metaEl.setAttribute('content', 'width=device-width,user-scalable=no,initial-scale=' + scale + ',maximum-scale=' + scale + ',minimum-scale=' + scale);
-  console.log(document.documentElement.clientWidth, _designWidth, _baseFontSize);
-  console.log(document.documentElement.clientWidth / (_designWidth / _baseFontSize))
   document.documentElement.style.fontSize = document.documentElement.clientWidth / (_designWidth / _baseFontSize) + 'px';
 };
 
