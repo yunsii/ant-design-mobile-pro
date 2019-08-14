@@ -66,7 +66,7 @@ class Login extends React.PureComponent<LoginProps> {
     const { form: { getFieldProps }, loading } = this.props;
 
     return (
-      <div style={{ marginTop: 'calc(50vh - 180px)' }}>
+      <div style={{ marginTop: 'calc(50vh - 180px)', padding: '0 16px' }}>
         <Paper icon={icon}>
           <List style={{ marginTop: 32 }}>
             <InputItem
