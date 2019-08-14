@@ -1,7 +1,7 @@
 // @flow 
 import * as React from 'react';
 type Props = {
-  type: 'user' | 'password' | 'copyright';
+  type: string;
   style?: React.CSSProperties;
 };
 const CustomIcon = (props: Props) => {
