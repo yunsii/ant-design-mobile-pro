@@ -1,5 +1,7 @@
 // @flow 
 import * as React from 'react';
+import styles from './index.less';
+
 type Props = {
   title: any;
   value: number;
@@ -14,7 +16,7 @@ const Statistics = (props: Props) => {
   }
   return (
     <div>
-      <p style={style}>{title}</p>
+      <div className={styles.item} style={style}>{title}</div>
       <p style={style}>{value}</p>
     </div>
   );
