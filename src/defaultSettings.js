@@ -5,7 +5,6 @@ module.exports = {
    */
   primaryColor: '#60ebe6',
   colorWeak: false,
-  title: 'Ant Design Mobile Pro',
   pwa: false,
   // Your custom iconfont Symbol script Url
   // eg：//at.alicdn.com/t/font_1039637_btcrd5co4w.js
