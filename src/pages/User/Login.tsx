@@ -73,7 +73,7 @@ class Login extends React.PureComponent<LoginProps> {
         <Paper icon={icon}>
           <List style={{ marginTop: '.32rem' }}>
             <InputItem
-              placeholder="请输入帐号"
+              placeholder="请输入帐号：admin"
               autoComplete='off'
               labelNumber={1}
               {...getFieldProps('username', {
@@ -88,7 +88,7 @@ class Login extends React.PureComponent<LoginProps> {
             </InputItem>
             <InputItem
               type="password"
-              placeholder="请输入密码"
+              placeholder="请输入密码：password"
               autoComplete='off'
               labelNumber={1}
               {...getFieldProps('password', {
