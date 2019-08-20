@@ -32,9 +32,7 @@ const errorHandler = (error: { response: Response }): Response => {
     // const errorText = codeMessage[response.status] || response.statusText;
     const { status, url } = response;
 
-    Toast.fail({
-      message: `请求错误 ${status}`,
-    });
+    Toast.fail(`请求错误 ${status}`);
     // notification.error({
     //   message: `请求错误 ${status}: ${url}`,
     //   description: errorText,
