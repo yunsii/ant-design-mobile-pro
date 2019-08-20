@@ -37,7 +37,7 @@ class Login extends React.PureComponent<LoginProps> {
     form.validateFields((err, values) => {
       console.log(err, values);
       if (err) {
-        Toast.info('请输入正确的帐号密码', 1.2, undefined, false);
+        Toast.info('请输入正确的帐号密码', 2, undefined, false);
         return;
       };
       dispatch({

@@ -22,6 +22,7 @@
     "rc-form": "^2.4.8",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-transition-group": "^4.2.2",
     "umi-request": "^1.2.2"
   },
   "devDependencies": {
