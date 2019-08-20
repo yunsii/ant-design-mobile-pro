@@ -135,8 +135,10 @@ export default class Center extends React.PureComponent<CenterProps> {
           <div className={styles.userInfo}>
             <Avatar
               src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
-              size={64}
+              size={48}
               shape='square'
+              style={{ marginLeft: 24 }}
+              bordered
             />
             <span className={styles.username}>admin</span>
             <span className={styles.lastLogin}>2019-8-14 09:47:07</span>
