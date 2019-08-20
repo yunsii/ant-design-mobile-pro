@@ -38,14 +38,13 @@ const Avatar = (props: Props) => {
         width: `${size / 100}rem`,
         height: `${size / 100}rem`,
         lineHeight: `${size / 100}rem`,
-        fontSize: 18,
       }
       : {};
   const borderStyle: React.CSSProperties =
     bordered
       ? {
-        border: '1px solid #dfdfdf',
-        borderRadius: 2,
+        border: '.01rem solid #dfdfdf',
+        borderRadius: '.06rem',
       }
       : {};
   return (
