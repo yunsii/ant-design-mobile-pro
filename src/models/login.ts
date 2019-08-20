@@ -24,7 +24,7 @@ export default {
       if (response.status === 'ok') {
         yield put(routerRedux.replace('/'));
       } else {
-        Toast.fail('帐号或密码错误！')
+        Toast.fail('帐号或密码错误！', 2, undefined, false)
       }
     },
 
