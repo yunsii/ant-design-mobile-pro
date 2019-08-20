@@ -27,9 +27,11 @@ type Props = {
   alt?: string;
   onError?: () => void;
   style?: React.CSSProperties;
+  className?: string;
+  bordered?: boolean;
 };
 const Avatar = (props: Props) => {
-  const { src, size, shape, alt, onError, style } = props;
+  const { src, size, shape, alt, onError, style, className, bordered } = props;
   const sizeStyle: React.CSSProperties =
     typeof size === 'number'
       ? {
@@ -39,12 +41,19 @@ const Avatar = (props: Props) => {
         fontSize: 18,
       }
       : {};
+  const borderStyle: React.CSSProperties =
+    bordered
+      ? {
+        border: '1px solid #dfdfdf',
+        borderRadius: 2,
+      }
+      : {};
   return (
-    <span style={style}>
+    <span style={style} className={className}>
       <img
         src={src}
         alt={alt}
-        style={sizeStyle}
+        style={{ ...sizeStyle, ...borderStyle }}
         className={classNames(typeof size !== 'number' ? setSizeClassName(size) : '', setShapeClassName(shape))}
         onError={onError}
       />
@@ -56,6 +65,7 @@ Avatar.defaultProps = {
   size: 'default',
   shape: 'circle',
   alt: '',
+  bordered: false,
 }
 
 export default Avatar;
