@@ -2,10 +2,30 @@
 
 @user-info-padding: 4px;
 @user-info-left: 80px;
-@user-info-right: @user-info-padding + 8px;
+@user-info-right: @user-info-padding + 12px;
 
 @monitor-height: 140px;
 @monitor-over-height: 50px;
+
+@infoStyle: {
+  position: absolute;
+  left: @user-info-left;
+  font-size: 16px;
+  color: white;
+}
+
+@buttonStyle: {
+  position: absolute;
+  right: @user-info-right;
+  color: white;
+  border: 1px solid white;
+  height: 22px;
+  line-height: 22px;
+  background: unset;
+  border-radius: 11px;
+  width: 120px;
+  font-size: 16px;
+}
 
 .hero {
   width: 100%;
@@ -26,47 +46,23 @@
     padding: 0 @user-info-padding;
 
     .username {
-      position: absolute;
-      left: @user-info-left;
+      @infoStyle();
       bottom: 42px;
-      font-size: 16px;
-      color: white;
     }
 
     .lastLogin {
-      position: absolute;
-      left: @user-info-left;
+      @infoStyle();
       bottom: 13px;
-      font-size: 16px;
-      color: white;
     }
 
     .updatePassword {
-      position: absolute;
-      right: @user-info-right;
+      @buttonStyle();
       bottom: 42px;
-      color: white;
-      border: 1px solid white;
-      height: 22px;
-      line-height: 22px;
-      background: unset;
-      border-radius: 11px;
-      width: 120px;
-      font-size: 16px;
     }
 
     .exit {
-      position: absolute;
-      right: @user-info-right;
+      @buttonStyle();
       bottom: 13px;
-      color: white;
-      border: 1px solid white;
-      height: 22px;
-      line-height: 22px;
-      background: unset;
-      border-radius: 11px;
-      width: 120px;
-      font-size: 16px;
     }
   }
 }
