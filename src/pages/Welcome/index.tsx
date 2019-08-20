@@ -74,7 +74,7 @@ const statistics = [
 const menuItems = [
   {
     icon: <MenuIcon type='icon-shouhuoji' color='#f37a3f' />,
-    text: '售货机',
+    text: '缺货设备',
   },
   {
     icon: <MenuIcon type='icon-lixianshebeishu' color='#4fdde6' />,
