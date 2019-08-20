@@ -1,9 +1,11 @@
 import React, { Fragment } from 'react';
+import { connect } from 'dva';
 import { Grid, Button, Flex } from 'antd-mobile';
 import Avatar from '@/components/Avatar';
 import Paper from '@/components/Paper';
 import Statistics from '@/components/Statistics';
 import CustomIcon from '@/components/CustomIcon';
+import { Dispatch } from '@/models/connect';
 import styles from './index.less';
 
 // const data = Array.from(new Array(9)).map((_val, i) => ({
@@ -107,13 +109,10 @@ const menuItems = [
 ];
 
 export interface CenterProps {
-  form: any;
-  dispatch: any;
-  login: any;
-  loading: boolean;
+  dispatch: Dispatch;
 }
 
-export default class Center extends React.PureComponent<CenterProps> {
+class Welcome extends React.PureComponent<CenterProps> {
   state = {
     data: ['1', '2', '3'],
     imgHeight: 176,
@@ -126,6 +125,13 @@ export default class Center extends React.PureComponent<CenterProps> {
         data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
       });
     }, 100);
+  }
+
+  handleExit = () => {
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'login/logout',
+    })
   }
 
   render() {
@@ -143,7 +149,7 @@ export default class Center extends React.PureComponent<CenterProps> {
             <span className={styles.username}>admin</span>
             <span className={styles.lastLogin}>2019-8-14 09:47:07</span>
             <Button inline className={styles.updatePassword}>修改密码</Button>
-            <Button inline className={styles.exit}>退出</Button>
+            <Button inline className={styles.exit} onClick={this.handleExit}>退出</Button>
           </div>
         </header>
         <div className={styles.monitor}>
@@ -168,3 +174,5 @@ export default class Center extends React.PureComponent<CenterProps> {
     );
   }
 }
+
+export default connect()(Welcome);
