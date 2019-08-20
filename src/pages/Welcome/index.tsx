@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Grid, Carousel, WhiteSpace, Button, Flex } from 'antd-mobile';
+import { Grid, Button, Flex } from 'antd-mobile';
 import Avatar from '@/components/Avatar';
 import Paper from '@/components/Paper';
 import Statistics from '@/components/Statistics';
