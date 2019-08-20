@@ -10,6 +10,7 @@
     "baseUrl": ".",
     "strict": true,
     "allowJs": true,
+    "noEmit": true,
     "paths": {
       "@/*": ["src/*"]
     },
