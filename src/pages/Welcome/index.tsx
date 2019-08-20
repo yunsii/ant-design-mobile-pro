@@ -137,7 +137,7 @@ export default class Center extends React.PureComponent<CenterProps> {
               src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
               size={48}
               shape='square'
-              style={{ marginLeft: 24 }}
+              style={{ marginLeft: '.24rem' }}
               bordered
             />
             <span className={styles.username}>admin</span>
