@@ -19,6 +19,10 @@ export default [
         component: './Welcome',
       },
       {
+        path: '/demo/standard-list',
+        component: './Demo/StandardList',
+      },
+      {
         component: './404',
       },
     ],
