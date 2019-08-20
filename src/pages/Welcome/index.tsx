@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'dva';
+import router from 'umi/router';
 import { Grid, Button, Flex } from 'antd-mobile';
 import Avatar from '@/components/Avatar';
 import Paper from '@/components/Paper';
@@ -23,9 +24,9 @@ const statistics = [
     key: 'all',
     title: (
       <Fragment>
-        <MenuIcon type='icon-quanbushebei' color='#3aceee' /><br />
+        <MenuIcon type='icon-all' color='#3aceee' /><br />
         <p>
-          全部设备
+          总数量
         </p>
       </Fragment>
     ),
@@ -36,9 +37,9 @@ const statistics = [
     key: 'lack',
     title: (
       <Fragment>
-        <MenuIcon type='icon-quehuobuhuo' color='#3aceee' /><br />
+        <MenuIcon type='icon-empty' color='#3aceee' /><br />
         <p>
-          缺货设备
+          －－－－
         </p>
       </Fragment>
     ),
@@ -49,9 +50,9 @@ const statistics = [
     key: 'online',
     title: (
       <Fragment>
-        <MenuIcon type='icon-shebei1' color='#3aceee' /><br />
+        <MenuIcon type='icon-empty' color='#3aceee' /><br />
         <p>
-          在线设备
+          －－－－
         </p>
       </Fragment>
     ),
@@ -62,9 +63,9 @@ const statistics = [
     key: 'offline',
     title: (
       <Fragment>
-        <MenuIcon type='icon-lixianshebeishu' color='#3aceee' /><br />
+        <MenuIcon type='icon-empty' color='#3aceee' /><br />
         <p>
-          离线设备
+          －－－－
         </p>
       </Fragment>
     ),
@@ -75,36 +76,37 @@ const statistics = [
 
 const menuItems = [
   {
-    icon: <MenuIcon type='icon-shouhuoji' color='#f37a3f' />,
-    text: '缺货设备',
+    icon: <MenuIcon type='icon-list' color='#f37a3f' />,
+    text: '长列表',
+    link: '/demo/standard-list'
   },
   {
-    icon: <MenuIcon type='icon-lixianshebeishu' color='#4fdde6' />,
-    text: '离线设备',
+    icon: <MenuIcon type='icon-empty' color='#4fdde6' />,
+    text: '－－－－',
   },
   {
-    icon: <MenuIcon type='icon-shebei' color='#8ad939' />,
-    text: '设备详情',
+    icon: <MenuIcon type='icon-empty' color='#8ad939' />,
+    text: '－－－－',
   },
   {
-    icon: <MenuIcon type='icon-baobiao' color='#ae93e7' />,
-    text: '即时报表',
+    icon: <MenuIcon type='icon-empty' color='#ae93e7' />,
+    text: '－－－－',
   },
   {
-    icon: <MenuIcon type='icon-ribao' color='#ae93e7' />,
-    text: '销售日报',
+    icon: <MenuIcon type='icon-empty' color='#ae93e7' />,
+    text: '－－－－',
   },
   {
-    icon: <MenuIcon type='icon-yuebao' color='#fda067' />,
-    text: '销售月报',
+    icon: <MenuIcon type='icon-empty' color='#fda067' />,
+    text: '－－－－',
   },
   {
-    icon: <MenuIcon type='icon-ditu' color='#ffb611' />,
-    text: '地图',
+    icon: <MenuIcon type='icon-empty' color='#ffb611' />,
+    text: '－－－－',
   },
   {
-    icon: <MenuIcon type='icon-sao' color='#57e0e2' />,
-    text: '扫一扫',
+    icon: <MenuIcon type='icon-empty' color='#57e0e2' />,
+    text: '－－－－',
   },
 ];
 
@@ -134,6 +136,12 @@ class Welcome extends React.PureComponent<CenterProps> {
     })
   }
 
+  handleClick = (item) => {
+    if (item.link) {
+      router.push(item.link);
+    }
+  }
+
   render() {
     return (
       <div className={styles.hero}>
@@ -143,7 +151,7 @@ class Welcome extends React.PureComponent<CenterProps> {
               src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
               size={48}
               shape='square'
-              style={{ marginLeft: '.24rem' }}
+              style={{ marginLeft: '.2rem' }}
               bordered
             />
             <span className={styles.username}>admin</span>
@@ -154,7 +162,7 @@ class Welcome extends React.PureComponent<CenterProps> {
         </header>
         <div className={styles.monitor}>
           <Paper clearPadding>
-            <Flex justify='center' style={{ width: '100%', height: '100%'}}>
+            <Flex justify='center' style={{ width: '100%', height: '100%' }}>
               {statistics.map((item) => {
                 return (
                   <Flex.Item key={item.key}>
@@ -169,7 +177,7 @@ class Welcome extends React.PureComponent<CenterProps> {
             </Flex>
           </Paper>
         </div>
-        <Grid className={styles.menu} data={menuItems} hasLine={false} columnNum={3} />
+        <Grid className={styles.menu} data={menuItems} hasLine={false} columnNum={3} onClick={this.handleClick} />
       </div>
     );
   }
