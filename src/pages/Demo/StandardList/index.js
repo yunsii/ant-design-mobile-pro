@@ -34,18 +34,23 @@ class Welcome extends React.PureComponent {
     list: [],
     loading: true,
     current: 0,
+    data: {
+      list: [],
+      pagination: {},
+    }
   }
 
-  componentDidMount() {
-    // you can scroll to the specified position
-    // setTimeout(() => this.lv.scrollTo(0, 120), 800);
-
-    // simulate initial Ajax
+  initData = () => {
     setTimeout(() => {
       this.setState({
-        list: genData(1),
         loading: false,
-        current: 1,
+        data: {
+          list: genData(1),
+          pagination: {
+            current: 1,
+            last: lastPage,
+          }
+        }
       });
     }, 600);
   }
@@ -55,11 +60,16 @@ class Welcome extends React.PureComponent {
       loading: true,
     })
     setTimeout(() => {
-      const { current } = this.state;
+      const { pagination: { current } } = this.state.data;
       this.setState({
-        list: genData(current + 1),
         loading: false,
-        current: current + 1,
+        data: {
+          list: genData(current + 1),
+          pagination: {
+            current: current + 1,
+            last: lastPage,
+          }
+        }
       });
     }, 600);
   }
@@ -78,16 +88,17 @@ class Welcome extends React.PureComponent {
       </Card>
     )
   }
+  
   render() {
-    const { list, loading, current } = this.state;
+    const { data, loading } = this.state;
     return (
       <PageWrapper title='长列表' backable>
         <StandardList
-          data={list}
+          data={data}
           loading={loading}
           renderRow={this.renderRow}
+          initData={this.initData}
           moreData={this.moreData}
-          hasMore={current < lastPage}
         />
       </PageWrapper>
     );

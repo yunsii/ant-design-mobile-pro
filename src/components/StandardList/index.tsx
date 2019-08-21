@@ -5,15 +5,20 @@ import { ListViewProps } from 'antd-mobile/lib/list-view';
 let allData: any[] = [];
 
 export interface StandardListProps extends ListViewProps {
-  data: any[];
+  data: {
+    list: any[],
+    pagination: {
+      current: number,
+      last: number,
+    },
+  };
   loading?: boolean;
   initData?: () => void;
-  hasMore: boolean;
   moreData?: () => void;
 }
 
 export default function StandardList(props: StandardListProps) {
-  const { data, loading, initData, hasMore, moreData, ...rest } = props;
+  const { data, loading, initData, moreData, ...rest } = props;
   const [list, setList] = useState(new ListView.DataSource({
     rowHasChanged: (row1, row2) => row1 !== row2,
   }));
@@ -24,7 +29,7 @@ export default function StandardList(props: StandardListProps) {
   }, []);
 
   useEffect(() => {
-    allData = [...allData, ...data];
+    allData = [...allData, ...data.list];
     setList(list.cloneWithRows(allData));
   }, [data])
 
@@ -41,9 +46,11 @@ export default function StandardList(props: StandardListProps) {
   );
 
   const onEndReached = () => {
-    if (!hasMore) { return; }
+    const { pagination: { current, last } } = data;
+    if (current >= last) { return; }
     if (moreData) { moreData(); }
   }
+  console.log(data);
 
   return (
     <>
@@ -57,6 +64,7 @@ export default function StandardList(props: StandardListProps) {
               {loading ? '加载中...' : '已加载全部数据'}
             </div>
           )}
+          pageSize={2}
           renderSeparator={separator}
           useBodyScroll
           scrollRenderAheadDistance={500}
@@ -65,12 +73,14 @@ export default function StandardList(props: StandardListProps) {
           {...rest}
         />
       </WingBlank>
-      <ActivityIndicator animating={loading} toast />
     </>
   )
 }
 
 StandardList.defaultProps = {
-  data: [],
+  data: {
+    list: [],
+    pagination: {},
+  },
   loading: false,
 }
