@@ -29,7 +29,7 @@ function genData(page) {
   return result;
 }
 
-class Welcome extends React.PureComponent {
+class StandardListDemo extends React.PureComponent {
   state = {
     list: [],
     loading: true,
@@ -105,4 +105,4 @@ class Welcome extends React.PureComponent {
   }
 }
 
-export default connect()(Welcome);
+export default connect()(StandardListDemo);
