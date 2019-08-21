@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { WingBlank, ActivityIndicator, ListView } from 'antd-mobile';
+import { WingBlank, ListView } from 'antd-mobile';
 import { ListViewProps } from 'antd-mobile/lib/list-view';
 
 let allData: any[] = [];
@@ -15,17 +15,21 @@ export interface StandardListProps extends ListViewProps {
   loading?: boolean;
   initData?: () => void;
   moreData?: () => void;
+  afterClose?: () => void;
 }
 
 export default function StandardList(props: StandardListProps) {
-  const { data, loading, initData, moreData, ...rest } = props;
+  const { data, loading, initData, moreData, afterClose, ...rest } = props;
   const [list, setList] = useState(new ListView.DataSource({
     rowHasChanged: (row1, row2) => row1 !== row2,
   }));
 
   useEffect(() => {
     if (initData) { initData() };
-    return () => { allData = [] };
+    return () => {
+      allData = [];
+      if (afterClose) { afterClose(); }
+    };
   }, []);
 
   useEffect(() => {
@@ -50,7 +54,6 @@ export default function StandardList(props: StandardListProps) {
     if (current >= last) { return; }
     if (moreData) { moreData(); }
   }
-  console.log(data);
 
   return (
     <>
