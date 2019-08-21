@@ -81,8 +81,9 @@ const menuItems = [
     link: '/demo/standard-list'
   },
   {
-    icon: <MenuIcon type='icon-empty' color='#4fdde6' />,
-    text: '－－－－',
+    icon: <MenuIcon type='icon-form' color='#4fdde6' />,
+    text: '表单',
+    link: '/demo/form',
   },
   {
     icon: <MenuIcon type='icon-empty' color='#8ad939' />,

@@ -23,6 +23,10 @@ export default [
         component: './Demo/StandardList',
       },
       {
+        path: '/demo/form',
+        component: './Demo/Form',
+      },
+      {
         component: './404',
       },
     ],
