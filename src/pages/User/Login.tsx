@@ -11,9 +11,8 @@ import styles from './Login.less';
 const logo = '/logo.svg';
 const logoStyle = {
   position: 'relative',
-  width: '.48rem',
-  height: '.48rem',
-  padding: '.12rem',
+  width: '1.24rem',
+  padding: '.36rem',
   boxSizing: 'content-box',
   backgroundColor: 'white',
   borderRadius: '50%',
@@ -22,7 +21,7 @@ const logoStyle = {
   // backgroundSize: '48px 48px',
 }
 
-const iconStyle = { fontSize: '.24rem', color: '#776e6e' };
+const iconStyle = { fontSize: '.48rem', color: '#776e6e' };
 
 export interface LoginProps {
   form: any;
@@ -59,7 +58,6 @@ class Login extends React.PureComponent<LoginProps> {
     const icon = (
       <div className={styles.logoWrapper}>
         <img
-          width={'.48rem'}
           src={logo}
           alt=""
           style={logoStyle as any}
@@ -69,9 +67,9 @@ class Login extends React.PureComponent<LoginProps> {
     const { form: { getFieldProps }, loading } = this.props;
 
     return (
-      <div style={{ marginTop: '2rem', padding: '0 .16rem' }}>
+      <div style={{ marginTop: '4rem', padding: '0 .32rem' }}>
         <Paper icon={icon}>
-          <List style={{ marginTop: '.32rem' }}>
+          <List style={{ marginTop: '.64rem' }}>
             <InputItem
               placeholder="请输入帐号：admin"
               autoComplete='off'
@@ -106,7 +104,7 @@ class Login extends React.PureComponent<LoginProps> {
           <Button
             type="primary"
             loading={loading}
-            style={{ margin: '.32rem .04rem' }}
+            style={{ margin: '.64rem .08rem' }}
             onClick={this.handleSubmit}
           >
             登录

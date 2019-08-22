@@ -39,7 +39,7 @@ function setRemIfResize() {
   if (!document.addEventListener) {
     return
   }
-  const event = () => setRem(375, 100);
+  const event = () => setRem(750, 75);
   window.addEventListener(resizeEvt, event, false);
   document.addEventListener("DOMContentLoaded", event, false);
 }

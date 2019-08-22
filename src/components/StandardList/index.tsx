@@ -50,7 +50,7 @@ export default function StandardList(props: StandardListProps) {
       key={`${sectionID}-${rowID}`}
       style={{
         backgroundColor: '#F5F5F9',
-        height: '.12rem',
+        height: '.24rem',
       }}
     />
   );
