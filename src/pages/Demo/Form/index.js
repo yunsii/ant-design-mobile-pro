@@ -44,7 +44,7 @@ const setBasicItems = (form) => {
             required: true, message: '请选择性别',
           }
         ],
-      }
+      },
     },
     {
       type: 'custom',
