@@ -4,13 +4,19 @@ import { Button } from '@/components/CustomAntdMobile';
 import { Picker } from './components';
 import FormContext, { FormProvider } from './FormContext';
 
-function judgeComponent(type, inputItemProps = {} as any, component) {
+function judgeComponent(type, inputItemProps = {} as any, component, { form, fieldName }: { form: any, fieldName: string }) {
+  const { setFieldsValue } = form;
   const { label, ...rest } = inputItemProps;
   if (type === 'custom') {
     return component;
   } else if (type === 'picker') {
     return (
-      <Picker cols={1} {...rest}>
+      <Picker
+        cols={1}
+        dismissText='重置'
+        onDismiss={() => { setFieldsValue({ [fieldName]: undefined }) }}
+        {...rest}
+      >
         <List.Item arrow="horizontal">{label}</List.Item>
       </Picker>
     )
@@ -66,7 +72,7 @@ function Form(props: FormProps) {
 
       return (
         React.cloneElement(
-          judgeComponent(type, inputItemProps, component),
+          judgeComponent(type, inputItemProps, component, { form, fieldName }),
           {
             key: fieldName,
             ..._fieldProps,
