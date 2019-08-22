@@ -1,8 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { WingBlank, ListView } from 'antd-mobile';
+import { WingBlank, ListView, ActivityIndicator } from 'antd-mobile';
 import { ListViewProps } from 'antd-mobile/lib/list-view';
 
-let allData: any[] = [];
+export let allData: any[] = [];
+
+export function setAllData(data) {
+  allData = data;
+}
 
 export interface StandardListProps extends ListViewProps {
   data: {
@@ -16,10 +20,12 @@ export interface StandardListProps extends ListViewProps {
   initData?: () => void;
   moreData?: () => void;
   afterClose?: () => void;
+  style?: React.CSSProperties;
+  className?: string;
 }
 
 export default function StandardList(props: StandardListProps) {
-  const { data, loading, initData, moreData, afterClose, ...rest } = props;
+  const { data, loading, initData, moreData, afterClose, style, className, ...rest } = props;
   const [list, setList] = useState(new ListView.DataSource({
     rowHasChanged: (row1, row2) => row1 !== row2,
   }));
@@ -56,7 +62,7 @@ export default function StandardList(props: StandardListProps) {
   }
 
   return (
-    <>
+    <div style={style} className={className}>
       <WingBlank>
         {separator(0, 0)}
         <ListView
@@ -76,7 +82,8 @@ export default function StandardList(props: StandardListProps) {
           {...rest}
         />
       </WingBlank>
-    </>
+      <ActivityIndicator toast animating={loading} />
+    </div>
   )
 }
 
