@@ -54,7 +54,7 @@ const setBasicItems = (form) => {
           extra={<Switch {...getFieldProps('confirm', { initialValue: true, valuePropName: 'checked' })} />}
         >
           确认信息
-      </List.Item>
+        </List.Item>
       ),
     },
   ];
