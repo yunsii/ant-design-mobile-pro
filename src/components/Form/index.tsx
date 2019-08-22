@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { List, Toast, InputItem } from 'antd-mobile';
 import { Button } from '@/components/CustomAntdMobile';
 import { Picker } from './components';
-import { FormConsumer } from './FormContext';
-export { FormProvider } from './FormContext';
+import FormContext, { FormProvider } from './FormContext';
 
 function judgeComponent(type, inputItemProps = {} as any, component) {
   const { label, ...rest } = inputItemProps;
@@ -48,11 +47,10 @@ function Form(props: FormProps) {
     items,
     handleSubmit,
   } = props;
-  const [form, setForm] = useState(null as any);
+  const form = useContext(FormContext);
 
-  const setFormItems = (_form, _items: any) => {
-    setForm(_form);
-    const { getFieldProps, getFieldError } = _form;
+  const setFormItems = (_items: any) => {
+    const { getFieldProps, getFieldError } = form;
     return _items.map(item => {
       const { type, fieldName, inputItemProps, component, fieldProps } = item;
 
@@ -110,15 +108,19 @@ function Form(props: FormProps) {
   if (footer) { listProps.renderFooter = () => footer; }
 
   return (
-    <FormConsumer>
-      {_form => (
-        <List {...listProps}>
-          {setFormItems(_form, items)}
-          {handleSubmit ? renderButton() : null}
-        </List>
-      )}
-    </FormConsumer>
+    <List {...listProps}>
+      {setFormItems(items)}
+      {handleSubmit ? renderButton() : null}
+    </List>
   )
 }
 
-export default Form;
+export interface Props extends FormProps {
+  form: any;
+}
+
+export default ({ form, ...rest }: Props) => (
+  <FormProvider value={form}>
+    <Form {...rest} />
+  </FormProvider>
+);
