@@ -55,20 +55,23 @@ function Form(props: FormProps) {
     const { getFieldProps, getFieldError } = _form;
     return _items.map(item => {
       const { type, fieldName, inputItemProps, component, fieldProps } = item;
+
       const error = getFieldError(fieldName);
       const errorProps = error ? {
         error,
         onErrorClick: () => Toast.info(error[0], 2, undefined, false),
       } : {};
+
+      const _fieldProps = type !== 'custom' ? {
+        ...getFieldProps(fieldName, fieldProps || undefined),
+      } : {};
+
       return (
         React.cloneElement(
           judgeComponent(type, inputItemProps, component),
           {
             key: fieldName,
-            ...getFieldProps(
-              fieldName,
-              fieldProps || undefined,
-            ),
+            ..._fieldProps,
             ...errorProps,
           }
         )
@@ -79,7 +82,10 @@ function Form(props: FormProps) {
   const handleClick = () => {
     if (form) {
       form.validateFields((err, values) => {
-        console.log(err, values);
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('form err:', err);
+          console.log('form values', values);
+        }
         if (err) return;
         if (handleSubmit) { handleSubmit(values) };
       });
@@ -99,13 +105,14 @@ function Form(props: FormProps) {
     )
   }
 
+  const listProps: any = {};
+  if (header) { listProps.renderHeader = () => header; }
+  if (footer) { listProps.renderFooter = () => footer; }
+
   return (
     <FormConsumer>
       {_form => (
-        <List
-          renderHeader={() => header}
-          renderFooter={() => footer}
-        >
+        <List {...listProps}>
           {setFormItems(_form, items)}
           {handleSubmit ? renderButton() : null}
         </List>
