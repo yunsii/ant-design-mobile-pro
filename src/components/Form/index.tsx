@@ -37,7 +37,7 @@ export interface FormProps {
     fieldProps?: any,
     component?: React.ReactElement,
   }[];
-  handleSubmit?: (fieldsValue: any) => void;
+  onSubmit?: (fieldsValue: any) => void;
 }
 
 function Form(props: FormProps) {
@@ -45,7 +45,7 @@ function Form(props: FormProps) {
     header,
     footer,
     items,
-    handleSubmit,
+    onSubmit,
   } = props;
   const form = useContext(FormContext);
 
@@ -85,7 +85,7 @@ function Form(props: FormProps) {
           console.log('form values', values);
         }
         if (err) return;
-        if (handleSubmit) { handleSubmit(values) };
+        if (onSubmit) { onSubmit(values) };
       });
     }
   }
@@ -110,7 +110,7 @@ function Form(props: FormProps) {
   return (
     <List {...listProps}>
       {setFormItems(items)}
-      {handleSubmit ? renderButton() : null}
+      {onSubmit ? renderButton() : null}
     </List>
   )
 }

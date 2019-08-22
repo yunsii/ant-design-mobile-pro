@@ -93,7 +93,7 @@ class FormDemo extends React.PureComponent {
           form={form}
           header="个人简介"
           items={setAdvancedItems(form)}
-          handleSubmit={values => console.log(values)}
+          onSubmit={values => console.log(values)}
         />
       </PageWrapper>
     );
