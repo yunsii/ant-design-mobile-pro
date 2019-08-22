@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Switch } from 'antd-mobile';
+import { List, Switch, TextareaItem } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import PageWrapper from '@/components/PageWrapper';
 import Form, { FormProvider } from '@/components/Form';
@@ -15,7 +15,7 @@ const gender = [
   },
 ]
 
-const setItems = (form) => {
+const setBasicItems = (form) => {
   const { getFieldProps } = form;
   return [
     {
@@ -60,6 +60,25 @@ const setItems = (form) => {
   ];
 }
 
+const setAdvancedItems = (form) => {
+  const { getFieldProps } = form;
+  return [
+    {
+      type: 'custom',
+      fieldName: 'confirm',
+      component: (
+        <TextareaItem
+          {...getFieldProps('intro', {
+            initialValue: '各位评委老师好，我是...',
+          })}
+          rows={5}
+          count={100}
+        />
+      ),
+    },
+  ];
+}
+
 class FormDemo extends React.PureComponent {
   render() {
     const { form } = this.props;
@@ -68,7 +87,11 @@ class FormDemo extends React.PureComponent {
         <FormProvider value={form}>
           <Form
             header="个人信息"
-            items={setItems(form)}
+            items={setBasicItems(form)}
+          />
+          <Form
+            header="个人简介"
+            items={setAdvancedItems(form)}
             handleSubmit={values => console.log(values)}
           />
         </FormProvider>
