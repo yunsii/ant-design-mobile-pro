@@ -2,7 +2,7 @@ import React from 'react';
 import { List, Switch, TextareaItem } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import PageWrapper from '@/components/PageWrapper';
-import Form, { FormProvider } from '@/components/Form';
+import Form from '@/components/Form';
 
 const gender = [
   {
@@ -84,17 +84,17 @@ class FormDemo extends React.PureComponent {
     const { form } = this.props;
     return (
       <PageWrapper title='表单' backable>
-        <FormProvider value={form}>
-          <Form
-            header="个人信息"
-            items={setBasicItems(form)}
-          />
-          <Form
-            header="个人简介"
-            items={setAdvancedItems(form)}
-            handleSubmit={values => console.log(values)}
-          />
-        </FormProvider>
+        <Form
+          form={form}
+          header="个人信息"
+          items={setBasicItems(form)}
+        />
+        <Form
+          form={form}
+          header="个人简介"
+          items={setAdvancedItems(form)}
+          handleSubmit={values => console.log(values)}
+        />
       </PageWrapper>
     );
   }
