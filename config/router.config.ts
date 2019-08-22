@@ -19,12 +19,21 @@ export default [
         component: './Welcome',
       },
       {
-        path: '/demo/standard-list',
-        component: './Demo/StandardList',
-      },
-      {
-        path: '/demo/form',
-        component: './Demo/Form',
+        path: '/demo',
+        routes: [
+          {
+            path: '/demo/standard-list',
+            component: './Demo/StandardList',
+          },
+          {
+            path: '/demo/form',
+            component: './Demo/Form',
+          },
+          {
+            path: '/demo/amap',
+            component: './Demo/AMap',
+          },
+        ]
       },
       {
         component: './404',

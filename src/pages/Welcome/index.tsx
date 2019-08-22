@@ -16,7 +16,7 @@ import styles from './index.less';
 
 const MenuIcon = (props) => {
   const { type, color } = props;
-  return <CustomIcon type={type.split('-')[1]} style={{ color, fontSize: '.4rem' }} />
+  return <CustomIcon type={type.split('-')[1]} style={{ color, fontSize: '.8rem' }} />
 }
 
 const statistics = [
@@ -86,8 +86,9 @@ const menuItems = [
     link: '/demo/form',
   },
   {
-    icon: <MenuIcon type='icon-empty' color='#8ad939' />,
-    text: '－－－－',
+    icon: <MenuIcon type='icon-map' color='#8ad939' />,
+    text: '高德地图',
+    link: '/demo/amap',
   },
   {
     icon: <MenuIcon type='icon-empty' color='#ae93e7' />,
@@ -150,9 +151,9 @@ class Welcome extends React.PureComponent<CenterProps> {
           <div className={styles.userInfo}>
             <Avatar
               src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
-              size={48}
+              size={120}
               shape='square'
-              style={{ marginLeft: '.2rem' }}
+              style={{ marginLeft: '.4rem' }}
               bordered
             />
             <span className={styles.username}>admin</span>
