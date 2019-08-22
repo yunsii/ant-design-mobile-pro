@@ -21,6 +21,8 @@
     "qs": "^6.7.0",
     "rc-form": "^2.4.8",
     "react": "^16.8.6",
+    "react-amap": "^1.2.8",
+    "react-amap-plugin-custom-geolocation": "^1.0.1",
     "react-dom": "^16.8.6",
     "react-transition-group": "^4.2.2",
     "umi-request": "^1.2.2"
