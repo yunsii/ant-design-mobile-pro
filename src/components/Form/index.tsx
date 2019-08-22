@@ -90,7 +90,10 @@ function Form(props: FormProps) {
           console.log('form err:', err);
           console.log('form values', values);
         }
-        if (err) return;
+        if (err) {
+          Toast.fail(err[Object.keys(err)[0]].errors[0].message, 2, undefined, false);
+          return;
+        }
         if (onSubmit) { onSubmit(values) };
       });
     }
