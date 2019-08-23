@@ -9,18 +9,6 @@ import { Dispatch, ConnectState } from '@/models/connect';
 import styles from './Login.less';
 
 const logo = '/logo.svg';
-const logoStyle = {
-  position: 'relative',
-  width: '1.24rem',
-  padding: '.36rem',
-  boxSizing: 'content-box',
-  backgroundColor: 'white',
-  borderRadius: '50%',
-  zIndex: 10,
-  // backgroundImage: `url(${logo})`,
-  // backgroundSize: '48px 48px',
-}
-
 const iconStyle = { fontSize: '.48rem', color: '#776e6e' };
 
 export interface LoginProps {
@@ -60,7 +48,6 @@ class Login extends React.PureComponent<LoginProps> {
         <img
           src={logo}
           alt=""
-          style={logoStyle as any}
         />
       </div>
     );
