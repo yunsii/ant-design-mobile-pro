@@ -96,6 +96,9 @@ export function AMap(props: AMapProps) {
   }
 
   const { height } = wrapperStyle;
+  const customProps = position ? {
+    center: position,
+  } : {};
   return (
     <Fragment>
       <p style={{ margin: '8px 0' }}>当前地址：{renderFormattedAddress}</p>
@@ -129,13 +132,14 @@ export function AMap(props: AMapProps) {
           loading={
             <ActivityIndicator toast />
           }
+          {...customProps}
           {...mapProps}
         >
           {position && !isLocationPosition(locationPosition, position) ? (
             <Marker position={position} />
           ) : null}
           <Geolocation
-            // autoLocation
+            autoLocation
             enableHighAccuracy
             timeout={5000}
             buttonPosition="RB"
