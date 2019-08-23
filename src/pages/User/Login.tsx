@@ -1,11 +1,10 @@
 import React from 'react';
-import { List, InputItem, Toast } from 'antd-mobile';
+import { Toast } from 'antd-mobile';
 import { connect } from 'dva';
 import { createForm } from 'rc-form';
 import Paper from '@/components/Paper';
 import Form from '@/components/Form';
 import CustomIcon from '@/components/CustomIcon';
-import { Button } from '@/components/CustomAntdMobile';
 import { Dispatch, ConnectState } from '@/models/connect';
 import styles from './Login.less';
 
