@@ -69,7 +69,7 @@ export default function StandardList(props: StandardListProps) {
           ref={listViewEl}
           dataSource={list}
           renderFooter={() => (
-            <div style={{ padding: 30, textAlign: 'center' }}>
+            <div style={{ padding: '.3rem', textAlign: 'center' }}>
               {loading ? '加载中...' : '已加载全部数据'}
             </div>
           )}
