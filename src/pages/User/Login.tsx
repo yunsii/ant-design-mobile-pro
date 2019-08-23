@@ -3,6 +3,7 @@ import { List, InputItem, Toast } from 'antd-mobile';
 import { connect } from 'dva';
 import { createForm } from 'rc-form';
 import Paper from '@/components/Paper';
+import Form from '@/components/Form';
 import CustomIcon from '@/components/CustomIcon';
 import { Button } from '@/components/CustomAntdMobile';
 import { Dispatch, ConnectState } from '@/models/connect';
@@ -10,6 +11,47 @@ import styles from './Login.less';
 
 const logo = '/logo.svg';
 const iconStyle = { fontSize: '.48rem', color: '#776e6e' };
+
+const setItems = (form, config) => {
+  // const { getFieldProps } = form;
+  const { handleKeyPress } = config;
+  return [
+    {
+      fieldName: 'username',
+      inputItemProps: {
+        label: <CustomIcon type="user" style={iconStyle} />,
+        placeholder: "请输入帐号：admin",
+        autoComplete: 'off',
+        labelNumber: 1,
+      },
+      fieldProps: {
+        rules: [
+          {
+            required: true, message: '请输入姓名',
+          }
+        ],
+      }
+    },
+    {
+      fieldName: 'password',
+      inputItemProps: {
+        label: <CustomIcon type="password" style={iconStyle} />,
+        type: "password",
+        placeholder: "请输入密码：password",
+        autoComplete: 'off',
+        labelNumber: 1,
+        onKeyPress: handleKeyPress
+      },
+      fieldProps: {
+        rules: [
+          {
+            required: true, message: '请选择性别',
+          }
+        ],
+      },
+    },
+  ];
+}
 
 export interface LoginProps {
   form: any;
@@ -51,51 +93,22 @@ class Login extends React.PureComponent<LoginProps> {
         />
       </div>
     );
-    const { form: { getFieldProps }, loading } = this.props;
+    const { form, loading } = this.props;
 
     return (
       <div style={{ marginTop: '4rem', padding: '0 .32rem' }}>
         <Paper icon={icon}>
-          <List style={{ marginTop: '.64rem' }}>
-            <InputItem
-              placeholder="请输入帐号：admin"
-              autoComplete='off'
-              labelNumber={1}
-              {...getFieldProps('username', {
-                rules: [{
-                  required: true,
-                  message: '请输入帐号',
-                }],
-              })}
-              clear={true}
-            >
-              <CustomIcon type="user" style={iconStyle} />
-            </InputItem>
-            <InputItem
-              type="password"
-              placeholder="请输入密码：password"
-              autoComplete='off'
-              labelNumber={1}
-              {...getFieldProps('password', {
-                rules: [{
-                  required: true,
-                  message: '请输入密码',
-                }],
-              })}
-              clear={true}
-              onKeyPress={this.handleKeyPress}
-            >
-              <CustomIcon type="password" style={iconStyle} />
-            </InputItem>
-          </List>
-          <Button
-            type="primary"
-            loading={loading}
-            style={{ margin: '.64rem .08rem' }}
-            onClick={this.handleSubmit}
-          >
-            登录
-          </Button>
+          <Form
+            style={{ marginTop: '.64rem' }}
+            form={form}
+            items={setItems(form, { handleKeyPress: this.handleKeyPress })}
+            onSubmit={this.handleSubmit}
+            inListButton={false}
+            buttonProps={{
+              loading,
+              style: { margin: '.64rem 0.08rem' }
+            }}
+          />
         </Paper>
       </div>
     );
