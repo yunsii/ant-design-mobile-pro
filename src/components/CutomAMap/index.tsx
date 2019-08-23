@@ -164,7 +164,7 @@ export function AMap(props: AMapProps) {
                   o,
                   "error",
                   ({ info, message: msg }) => {
-                    Toast.fail("定位失败", info, msg);
+                    Toast.fail("定位失败");
                     console.error("定位失败", info, msg);
                   }
                 ); // 返回定位出错信息

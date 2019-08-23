@@ -3,7 +3,7 @@ import { Button } from 'antd-mobile';
 import { ButtonProps } from 'antd-mobile/lib/button';
 
 export interface CustomButtonProps extends ButtonProps {
-  children: any;
+  children?: any;
 }
 
 export default function CustomButton(props: CustomButtonProps) {
