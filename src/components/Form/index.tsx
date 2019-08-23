@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { List, Toast, InputItem, Picker } from 'antd-mobile';
 import { Button } from '@/components/CustomAntdMobile';
+import { CustomButtonProps } from '@/components/CustomAntdMobile/Button';
 import FormContext, { FormProvider } from './FormContext';
 
 function judgeComponent(type, inputItemProps = {} as any, component, { form, fieldName }: { form: any, fieldName: string }) {
@@ -43,6 +44,9 @@ export interface FormProps {
     component?: React.ReactElement,
   }[];
   onSubmit?: (fieldsValue: any) => void;
+  inListButton?: boolean;
+  buttonProps?: CustomButtonProps;
+  style?: React.CSSProperties;
 }
 
 function Form(props: FormProps) {
@@ -51,6 +55,9 @@ function Form(props: FormProps) {
     footer,
     items,
     onSubmit,
+    style,
+    inListButton,
+    buttonProps,
   } = props;
   const form = useContext(FormContext);
 
@@ -62,7 +69,7 @@ function Form(props: FormProps) {
       const error = getFieldError(fieldName);
       const errorProps = error ? {
         error,
-        onErrorClick: () => Toast.info(error[0], 2, undefined, false),
+        onErrorClick: () => Toast.info(error[0]),
       } : {};
 
       const _fieldProps = type !== 'custom' ? {
@@ -90,7 +97,7 @@ function Form(props: FormProps) {
           console.log('form values', values);
         }
         if (err) {
-          Toast.fail(err[Object.keys(err)[0]].errors[0].message, 2, undefined, false);
+          Toast.fail(err[Object.keys(err)[0]].errors[0].message);
           return;
         }
         if (onSubmit) { onSubmit(values) };
@@ -100,14 +107,14 @@ function Form(props: FormProps) {
 
   const renderButton = () => {
     return (
-      <List.Item>
-        <Button
-          type='primary'
-          onClick={handleClick}
-        >
-          确定
-        </Button>
-      </List.Item>
+      <Button
+        type='primary'
+        onClick={handleClick}
+        {...buttonProps}
+      >
+        确定
+      </Button>
+
     )
   }
 
@@ -116,11 +123,21 @@ function Form(props: FormProps) {
   if (footer) { listProps.renderFooter = () => footer; }
 
   return (
-    <List {...listProps}>
-      {setFormItems(items)}
-      {onSubmit ? renderButton() : null}
-    </List>
+    <>
+      <List style={style} {...listProps}>
+        {setFormItems(items)}
+        {inListButton && onSubmit ?
+          <List.Item>
+            {renderButton()}
+          </List.Item> : null}
+      </List>
+      {!inListButton && onSubmit ? renderButton() : null}
+    </>
   )
+}
+
+Form.defaultProps = {
+  inListButton: true,
 }
 
 export interface Props extends FormProps {
