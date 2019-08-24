@@ -33,8 +33,8 @@ const plugins: IPlugin[] = [
 
 export default {
   // add for transfer to umi
-  base: '',
-  publicPath: '',
+  base: '/',
+  publicPath: '/',
   define: {
     APP_TYPE: process.env.APP_TYPE || '',
   },
