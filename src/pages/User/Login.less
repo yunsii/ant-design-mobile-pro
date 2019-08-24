@@ -1,12 +1,18 @@
-@import '~antd-mobile/dist/antd-mobile.less';
+@import '~antd-mobile/lib/style/themes/default.less';
 
-@circle-size: 96px;
-@logo-size: 72px;
+@circle-size: 100px;
+@logo-size: 75px;
 
 .logoWrapper {
   position: relative;
 
   > img {
+    position: relative;
+    width: @logo-size;
+    padding: 10px;
+    background-color: white;
+    border-radius: 50%;
+    z-index: 10;
     box-shadow: @brand-primary 0 2px 8px;
   }
 
@@ -17,8 +23,9 @@
     height: @circle-size;
     top: -(@circle-size - @logo-size) / 2;
     left: -(@circle-size - @logo-size) / 2;
+    box-sizing: border-box;
     border-radius: 50%;
-    border: 1px solid white;
+    border: 1/75rem solid white;
   }
 
   // &      ::before {

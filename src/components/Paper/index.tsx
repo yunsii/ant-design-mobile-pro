@@ -22,8 +22,8 @@ export default function Paper(props: PaperProps) {
     style = {
       ...style,
 
-      marginTop: 60,
-      paddingTop: 96,
+      marginTop: '.3rem',
+      paddingTop: '1rem',
     };
   }
   if (clearPadding) {

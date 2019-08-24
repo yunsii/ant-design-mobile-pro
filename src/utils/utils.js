@@ -177,11 +177,6 @@ export function formatWan(val) {
   return result;
 }
 
-// 给官方演示站点用，用于关闭真实开发环境不需要使用的特性
-export function isAntdPro() {
-  return window.location.hostname === 'preview.pro.ant.design';
-}
-
 export const importCDN = (url, name) =>
   new Promise(resolve => {
     const dom = document.createElement('script');
