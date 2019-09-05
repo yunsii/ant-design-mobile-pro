@@ -8,7 +8,7 @@ class FormDemo extends React.PureComponent {
     return (
       <PageWrapper title='高德地图' backable>
         <CutomAMap
-          wrapperStyle={{ height: 'calc(100vh - 1.1rem)' }}
+          wrapperStyle={{ height: 'calc(100vh - 1rem)' }}
         />
       </PageWrapper>
     );

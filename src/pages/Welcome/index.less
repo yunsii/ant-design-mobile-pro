@@ -1,16 +1,16 @@
 @import '~antd-mobile/lib/style/themes/default.less';
 
-@user-info-padding: 4px;
-@user-info-left: 80px;
-@user-info-right: @user-info-padding + 12px;
+@user-info-padding: 8px;
+@user-info-left: 160px;
+@user-info-right: @user-info-padding + 24px;
 
-@monitor-height: 140px;
-@monitor-over-height: 50px;
+@monitor-height: 280px;
+@monitor-over-height: 100px;
 
 @infoStyle: {
   position: absolute;
   left: @user-info-left;
-  font-size: 16px;
+  font-size: 32px;
   color: white;
 };
 
@@ -19,12 +19,12 @@
   right: @user-info-right;
   color: white;
   border: 1px solid white;
-  height: 22px;
-  line-height: 22px;
+  height: 44px;
+  line-height: 44px;
   background: unset;
-  border-radius: 11px;
-  width: 120px;
-  font-size: 16px;
+  border-radius: 22px;
+  width: 240px;
+  font-size: 32px;
 };
 
 .hero {
@@ -35,46 +35,52 @@
 .header {
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 400px;
   background: @brand-primary;
 
   .userInfo {
     position: relative;
-    top: calc(50% - 44px);
+    top: calc(50% - 88px);
     width: 100%;
-    height: 60px;
+    height: 120px;
     padding: 0 @user-info-padding;
 
     .username {
       @infoStyle();
-      bottom: 42px;
+      bottom: 84px;
     }
 
     .lastLogin {
       @infoStyle();
-      bottom: 13px;
+      bottom: 26px;
     }
 
     .updatePassword {
       @buttonStyle();
-      bottom: 42px;
+      bottom: 84px;
     }
 
     .exit {
       @buttonStyle();
-      bottom: 13px;
+      bottom: 26px;
     }
   }
 }
 
 .monitor {
   position: absolute;
-  top: calc(200px - @monitor-over-height);
+  top: calc(400px - @monitor-over-height);
   width: 100%;
   height: @monitor-height;
-  padding: 0 16px;
+  padding: 0 32px;
 }
 
 .menu {
   padding-top: @monitor-height - @monitor-over-height;
+
+  :global {
+    .am-grid-text {
+      font-size: 32px !important;
+    }
+  }
 }

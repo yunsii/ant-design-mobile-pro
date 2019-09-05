@@ -96,8 +96,9 @@ export default {
   extraPostCSSPlugins: [
     // reference: https://github.com/evrone/postcss-px-to-viewport/blob/master/README_CN.md
     pxToViewPort({
-      viewportWidth: 375,
+      viewportWidth: 750,
       mediaQuery: false,
+      exclude: [/node_modules/],
     }),
   ],
   theme: {

@@ -119,7 +119,6 @@ export interface CenterProps {
 class Welcome extends React.PureComponent<CenterProps> {
   state = {
     data: ['1', '2', '3'],
-    imgHeight: 176,
   }
 
   componentDidMount() {
