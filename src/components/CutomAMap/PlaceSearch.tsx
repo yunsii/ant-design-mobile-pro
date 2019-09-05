@@ -46,9 +46,11 @@ export default class PlaceSearch extends React.Component<PlaceSearchProps> {
       left: ".2rem",
       background: "#fff",
       width: '4.2rem',
+      height: '.48rem',
+      fontSize: '.32rem',
       ...customStyle
-    };
+  };
 
-    return <input id="placeSearch" style={style as any} placeholder="搜索地址" />;
+  return<input id="placeSearch" style={style as any} placeholder="搜索地址" />;
   }
 }
