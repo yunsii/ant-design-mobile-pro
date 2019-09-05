@@ -33,7 +33,7 @@ export default function PageWrapper(props: PageWrapperProps) {
         {title}
       </NavBar>
       {fixed ?
-        <div style={{ paddingTop: '1rem' }}>
+        <div style={{ paddingTop: 45 }}>
           {children}
         </div> :
         children}
