@@ -24,7 +24,7 @@ export default function PageWrapper(props: PageWrapperProps) {
   }
 
   return (
-    <>
+    <div>
       <NavBar
         mode="dark"
         {...backableConfig}
@@ -37,7 +37,7 @@ export default function PageWrapper(props: PageWrapperProps) {
           {children}
         </div> :
         children}
-    </>
+    </div>
   )
 }
 
