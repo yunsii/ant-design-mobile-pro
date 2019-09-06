@@ -19,13 +19,13 @@ export interface StandardListProps extends ListViewProps {
   loading?: boolean;
   initData?: () => void;
   moreData?: () => void;
-  afterClose?: () => void;
+  onUnmount?: () => void;
   style?: React.CSSProperties;
   className?: string;
 }
 
 export default function StandardList(props: StandardListProps) {
-  const { data, loading, initData, moreData, afterClose, style, className, ...rest } = props;
+  const { data, loading, initData, moreData, onUnmount, style, className, ...rest } = props;
   const [list, setList] = useState(new ListView.DataSource({
     rowHasChanged: (row1, row2) => row1 !== row2,
   }));
@@ -34,7 +34,7 @@ export default function StandardList(props: StandardListProps) {
     if (initData) { initData() };
     return () => {
       allData = [];
-      if (afterClose) { afterClose(); }
+      if (onUnmount) { onUnmount(); }
     };
   }, []);
 
