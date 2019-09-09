@@ -98,10 +98,10 @@ export default {
     pxToViewPort({
       viewportWidth: 750,
       mediaQuery: false,
-      exclude: [/node_modules/],
     }),
   ],
   theme: {
+    'hd': '2px',
     'brand-primary': primaryColor,
     'brand-primary-tap': '#37dddd',
   },
