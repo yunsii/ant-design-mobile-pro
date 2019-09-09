@@ -32,7 +32,7 @@ const plugins: IPlugin[] = [
 ];
 
 export default {
-  // add for transfer to umi
+  // code split need base url
   base: '/',
   publicPath: '/',
   define: {
