@@ -163,7 +163,7 @@ class Welcome extends React.PureComponent<CenterProps> {
         </header>
         <div className={styles.monitor}>
           <Paper clearPadding>
-            <Flex justify='center' style={{ width: '100%', height: '100%' }}>
+            <Flex justify='center' style={{ width: '100%', height: '100%', margin: '.2rem 0' }}>
               {statistics.map((item) => {
                 return (
                   <Flex.Item key={item.key}>
