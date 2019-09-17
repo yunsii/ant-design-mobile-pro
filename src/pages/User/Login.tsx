@@ -95,7 +95,7 @@ class Login extends React.PureComponent<LoginProps> {
     const { form, loading } = this.props;
 
     return (
-      <div style={{ marginTop: '4rem', padding: '0 .32rem' }}>
+      <div className={styles.wrapper}>
         <Paper icon={icon}>
           <Form
             style={{ marginTop: '.64rem' }}
