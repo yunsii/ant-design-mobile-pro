@@ -1,6 +1,32 @@
+@import '~antd-mobile/lib/style/themes/default.less';
+
 .fixed {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 1000;
+}
+
+.fixedContent {
+	padding-top: 45 * @hd;
+}
+
+.drawer {
+  position: absolute;
+  top: 90px;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+
+	:global {
+		.am-drawer-sidebar {
+			background-color: #fff;
+			overflow: auto;
+			-webkit-overflow-scrolling: touch;
+		}
+
+		.am-drawer-sidebar .am-list {
+			width: 600px;
+			padding: 0;
+		}
+	}
 }
