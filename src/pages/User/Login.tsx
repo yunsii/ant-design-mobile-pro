@@ -44,7 +44,7 @@ const setItems = (form, config) => {
       fieldProps: {
         rules: [
           {
-            required: true, message: '请选择性别',
+            required: true, message: '请输入密码',
           }
         ],
       },
