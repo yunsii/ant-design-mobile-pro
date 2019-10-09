@@ -27,6 +27,7 @@ export default function PageWrapper(props: PageWrapperProps) {
     ...rest
   } = props;
   const [open, setOpen] = useState(false);
+  const useDrawer = leftContent && sidebar;
 
   let backableConfig: any = {};
   let drawerConfig: any = {};
@@ -42,6 +43,28 @@ export default function PageWrapper(props: PageWrapperProps) {
     };
   }
 
+  const renderChildren = () => {
+    if (useDrawer) {
+      return (
+        <Drawer
+          className={styles.drawer}
+          style={{ height: `calc(${document.documentElement.clientHeight}px - ${90 / 75}rem)` }}
+          contentStyle={{ color: '#A6A6A6', textAlign: 'center' }}
+          sidebar={sidebar}
+          open={open}
+          onOpenChange={() => { setOpen(!open) }}
+        >
+          {children}
+        </Drawer>
+      )
+    }
+    return fixed ?
+      <div className={styles.fixedContent}>
+        {children}
+      </div> :
+      children
+  }
+
   return (
     <div>
       <NavBar
@@ -52,21 +75,7 @@ export default function PageWrapper(props: PageWrapperProps) {
       >
         {title}
       </NavBar>
-      {leftContent && sidebar ?
-        <Drawer
-          className={styles.drawer}
-          style={{ height: `calc(${document.documentElement.clientHeight}px - ${90 / 75}rem)` }}
-          contentStyle={{ color: '#A6A6A6', textAlign: 'center' }}
-          sidebar={sidebar}
-          open={open}
-          onOpenChange={() => { setOpen(!open) }}
-        />
-        : null}
-      {fixed ?
-        <div className={styles.fixedContent}>
-          {children}
-        </div> :
-        children}
+      {renderChildren()}
     </div>
   )
 }
