@@ -12,8 +12,8 @@
 }
 
 .drawer {
-  position: absolute;
-  top: 90px;
+	position: absolute;
+	top: 90px;
 	overflow: auto;
 	-webkit-overflow-scrolling: touch;
 
@@ -21,17 +21,13 @@
 		.am-drawer-sidebar {
 			background-color: #fff;
 			overflow: auto;
+			z-index: 120;  // TabBar z-index is 100
 			-webkit-overflow-scrolling: touch;
 		}
 
 		.am-drawer-sidebar .am-list {
-			width: 600px;
+			width: 520px;
 			padding: 0;
-		}
-
-		.am-drawer-content {
-			text-align: unset !important;
-			color: unset !important;
 		}
 	}
 }

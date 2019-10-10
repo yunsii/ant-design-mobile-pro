@@ -49,29 +49,29 @@ export default function PageWrapper(props: PageWrapperProps) {
         <Drawer
           className={styles.drawer}
           style={{ height: `calc(${document.documentElement.clientHeight}px - ${90 / 75}rem)` }}
-          contentStyle={{ color: '#A6A6A6', textAlign: 'center' }}
           sidebar={sidebar}
           open={open}
           onOpenChange={() => { setOpen(!open) }}
-        >
+          >
           {children}
         </Drawer>
       )
     }
     return fixed ?
-      <div className={styles.fixedContent}>
+    <div className={styles.fixedContent}>
         {children}
       </div> :
       children
-  }
-
-  return (
+    }
+    
+    return (
     <div>
       <NavBar
         mode="dark"
         {...backableConfig}
         {...drawerConfig}
         className={classNames(fixed ? styles.fixed : '', className)}
+        {...rest}
       >
         {title}
       </NavBar>
