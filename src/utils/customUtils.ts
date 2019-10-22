@@ -1,3 +1,6 @@
+export const defaultDesignWidth = 750;
+export const defaultBaseFontSize = 75;
+
 export function addScriptToHead(url: string) {
   const head = document.getElementsByTagName('head')[0];
   const script = document.createElement('script');
@@ -7,8 +10,8 @@ export function addScriptToHead(url: string) {
 
 // reference: https://juejin.im/post/5c0dd7ac6fb9a049c43d7edc
 export function setRem(designWidth?: number, baseFontSize?: number) {
-  const _designWidth = designWidth || 750;
-  const _baseFontSize = baseFontSize || 75;
+  const _designWidth = designWidth || defaultDesignWidth;
+  const _baseFontSize = baseFontSize || defaultBaseFontSize;
   // const ua = navigator.userAgent;
   // const matches = ua.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i);
   // const isIos = navigator.appVersion.match(/(iphone|ipad|ipod)/gi);
@@ -36,4 +39,8 @@ export function setRemIfResize(designWidth?: number, baseFontSize?: number) {
   const event = () => setRem(designWidth, baseFontSize);
   window.addEventListener(resizeEvt, event, false);
   document.addEventListener("DOMContentLoaded", event, false);
+}
+
+export function pxToRem(px: number) {
+  return `${px / defaultBaseFontSize}rem`;
 }
