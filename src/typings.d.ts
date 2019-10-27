@@ -12,4 +12,6 @@ declare module '*.tiff';
 
 interface Window {
   AMap: any;
+  FastClick?: any;
+  Promise?: any;
 }
