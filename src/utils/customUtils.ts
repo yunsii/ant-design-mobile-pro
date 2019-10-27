@@ -1,10 +1,11 @@
 export const defaultDesignWidth = 750;
 export const defaultBaseFontSize = 75;
 
-export function addScriptToHead(url: string) {
+export function addScriptToHead(url: string, onload?: () => void) {
   const head = document.getElementsByTagName('head')[0];
   const script = document.createElement('script');
   script.src = url;
+  if (onload) { script.onload = onload }
   head.appendChild(script);
 }
 
