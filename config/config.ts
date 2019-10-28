@@ -4,7 +4,7 @@ import webpackPlugin from './plugin.config';
 import pxToViewPort from 'postcss-px-to-viewport';
 const defaultSettings = require('../src/defaultSettings');
 
-const { primaryColor } = defaultSettings;
+const { primaryColor, primaryTapColor } = defaultSettings;
 
 // ref: https://umijs.org/config/
 const plugins: IPlugin[] = [
@@ -103,6 +103,6 @@ export default {
   theme: {
     'hd': '2px',
     'brand-primary': primaryColor,
-    'brand-primary-tap': '#37dddd',
+    'brand-primary-tap': primaryTapColor,
   },
 } as IConfig;

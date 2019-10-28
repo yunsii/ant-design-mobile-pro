@@ -2,11 +2,16 @@ import { AnyAction } from 'redux';
 import { EffectsCommandMap } from 'dva';
 import { RouterTypes } from 'umi';
 // import { GlobalModelState } from './global';
-import { DefaultSettings as SettingModelState } from '../defaultSettings';
 import { UserModelState } from './user';
 import { LoginState } from './login';
 
-export { /* GlobalModelState, */ SettingModelState, UserModelState };
+export interface SettingModelState {
+  primaryColor: string;
+  primaryTapColor: string;
+  iconfontUrl: string;
+}
+
+export { UserModelState };
 
 export interface Loading {
   global: boolean;
