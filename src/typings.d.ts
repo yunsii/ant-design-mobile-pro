@@ -11,7 +11,7 @@ declare module '*.bmp';
 declare module '*.tiff';
 
 interface Window {
-  AMap: any;
+  AMap?: any;
   FastClick?: any;
   Promise?: any;
 }
