@@ -52,19 +52,17 @@ export default function PageWrapper(props: PageWrapperProps) {
           sidebar={sidebar}
           open={open}
           onOpenChange={() => { setOpen(!open) }}
-          >
+        >
           {children}
         </Drawer>
       )
     }
     return fixed ?
-    <div className={styles.fixedContent}>
-        {children}
-      </div> :
+      <div className={styles.fixedContent}>{children}</div> :
       children
-    }
-    
-    return (
+  }
+
+  return (
     <div>
       <NavBar
         mode="dark"
