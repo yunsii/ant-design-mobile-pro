@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
-import { List, Toast, InputItem, Picker } from 'antd-mobile';
-import { Button } from '@/components/CustomAntdMobile';
-import { CustomButtonProps } from '@/components/CustomAntdMobile/Button';
+import { List, Toast, InputItem, Picker, Button } from 'antd-mobile';
+import { ButtonProps } from 'antd-mobile/lib/button'
 import FormContext, { FormProvider } from './FormContext';
 
 function judgeComponent(type, inputItemProps = {} as any, component, { form, fieldName }: { form: any, fieldName: string }) {
@@ -45,7 +44,8 @@ export interface FormProps {
   }[];
   onSubmit?: (fieldsValue: any) => void;
   inListButton?: boolean;
-  buttonProps?: CustomButtonProps;
+  buttonText?: string;
+  buttonProps?: ButtonProps;
   style?: React.CSSProperties;
 }
 
@@ -56,7 +56,8 @@ function Form(props: FormProps) {
     items,
     onSubmit,
     style,
-    inListButton,
+    inListButton = true,
+    buttonText = '确定',
     buttonProps,
   } = props;
   const form = useContext(FormContext);
@@ -112,9 +113,8 @@ function Form(props: FormProps) {
         onClick={handleClick}
         {...buttonProps}
       >
-        确定
+        {buttonText}
       </Button>
-
     )
   }
 
@@ -126,18 +126,13 @@ function Form(props: FormProps) {
     <>
       <List style={style} {...listProps}>
         {setFormItems(items)}
-        {inListButton && onSubmit ?
+        {inListButton ?
           <List.Item>
             {renderButton()}
-          </List.Item> : null}
+          </List.Item> : renderButton()}
       </List>
-      {!inListButton && onSubmit ? renderButton() : null}
     </>
   )
-}
-
-Form.defaultProps = {
-  inListButton: true,
 }
 
 export interface Props extends FormProps {
