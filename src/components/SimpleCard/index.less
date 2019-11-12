@@ -1,0 +1,38 @@
+@import '~antd-mobile/lib/style/themes/default.less';
+
+.wrapper {
+	background-color: @fill-base;
+	padding: 8 * @hd 0 2 * @hd 0;
+
+	.header {
+		display: flex;
+		align-items: center;
+		font-size: @font-size-heading;
+
+		div {
+			flex: 1;
+		}
+
+		&::before {
+			content: '';
+			border-left: 2 * @hd solid @brand-primary;
+			border-right: 2 * @hd solid @brand-primary;
+			margin-right: 8 * @hd;
+			height: @font-size-heading;
+		}
+
+		.title {
+			text-align: left;
+		}
+
+		.extra {
+			text-align: right;
+			padding-right: 12 * @hd;
+			color: @color-text-caption;
+		}
+	}
+
+	.body {
+		margin: 8 * @hd;
+	}
+}
