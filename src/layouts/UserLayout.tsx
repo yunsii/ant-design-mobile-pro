@@ -13,7 +13,7 @@ export interface UserLayoutProps {
 
 const copyright = (
   <Fragment>
-    Copyright <CustomIcon type="copyright" style={{ color: '#fff' }} /> 2019 <a href="https://github.com/theprimone" target="_blank" style={{ color: '#fff', textDecoration: 'underline' }}>theprimone</a> 出品
+    Copyright <CustomIcon type="copyright" className={styles.icon} /> 2019 <a href="https://github.com/theprimone" target="_blank" style={{ color: '#fff', textDecoration: 'underline' }}>theprimone</a> 出品
   </Fragment>
 );
 
