@@ -16,7 +16,7 @@ import styles from './index.less';
 
 const MenuIcon = (props) => {
   const { type, color } = props;
-  return <CustomIcon type={type.split('-')[1]} style={{ color, fontSize: '.8rem' }} />
+  return <CustomIcon type={type.split('-')[1]} size={60} style={{ color }} />
 }
 
 const statistics = [
