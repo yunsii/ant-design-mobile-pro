@@ -3,7 +3,7 @@ import { Toast } from 'antd-mobile';
 import { connect } from 'dva';
 import { createForm } from 'rc-form';
 import Paper from '@/components/Paper';
-import Form from '@/components/Form';
+import Form, { FormItem } from '@/components/Form';
 import CustomIcon from '@/components/CustomIcon';
 import { Dispatch, ConnectState } from '@/models/connect';
 import styles from './Login.less';
@@ -11,42 +11,41 @@ import styles from './Login.less';
 const logo = '/logo.svg';
 const iconStyle = { fontSize: '.48rem', color: '#776e6e' };
 
-const setItems = (form, config) => {
-  // const { getFieldProps } = form;
+const setItems: (form: any, config: any) => FormItem[] = (form, config) => {
   const { handleKeyPress } = config;
   return [
     {
-      fieldName: 'username',
-      inputItemProps: {
-        label: <CustomIcon type="user" style={iconStyle} />,
-        placeholder: "请输入帐号：admin",
-        autoComplete: 'off',
-        labelNumber: 1,
-      },
+      field: 'username',
+      label: <CustomIcon type="user" style={iconStyle} />,
       fieldProps: {
         rules: [
           {
             required: true, message: '请输入姓名',
           }
         ],
-      }
-    },
-    {
-      fieldName: 'password',
-      inputItemProps: {
-        label: <CustomIcon type="password" style={iconStyle} />,
-        type: "password",
-        placeholder: "请输入密码：password",
+      },
+      componentProps: {
+        placeholder: "请输入帐号：admin",
         autoComplete: 'off',
         labelNumber: 1,
-        onKeyPress: handleKeyPress
       },
+    },
+    {
+      field: 'password',
+      label: <CustomIcon type="password" style={iconStyle} />,
       fieldProps: {
         rules: [
           {
             required: true, message: '请输入密码',
           }
         ],
+      },
+      componentProps: {
+        type: "password",
+        placeholder: "请输入密码：password",
+        autoComplete: 'off',
+        labelNumber: 1,
+        onKeyPress: handleKeyPress
       },
     },
   ];
@@ -102,11 +101,12 @@ class Login extends React.PureComponent<LoginProps> {
             form={form}
             items={setItems(form, { handleKeyPress: this.handleKeyPress })}
             onSubmit={this.handleSubmit}
-            inListButton={false}
+            buttonText='登录'
             buttonProps={{
               loading,
               style: { margin: '.64rem 0.08rem' }
             }}
+            errorsFooter={false}
           />
         </Paper>
       </div>

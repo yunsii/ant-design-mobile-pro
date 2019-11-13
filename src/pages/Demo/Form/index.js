@@ -19,25 +19,20 @@ const setBasicItems = (form) => {
   const { getFieldProps } = form;
   return [
     {
-      fieldName: 'name',
-      inputItemProps: {
-        label: '姓名'
-      },
+      label: '姓名',
+      field: 'name',
       fieldProps: {
         rules: [
           {
             required: true, message: '请输入姓名',
           }
         ],
-      }
+      },
     },
     {
       type: 'picker',
-      fieldName: 'gender',
-      inputItemProps: {
-        label: '性别',
-        data: gender,
-      },
+      label: '性别',
+      field: 'gender',
       fieldProps: {
         rules: [
           {
@@ -45,10 +40,13 @@ const setBasicItems = (form) => {
           }
         ],
       },
+      componentProps: {
+        data: gender,
+      },
     },
     {
       type: 'custom',
-      fieldName: 'confirm',
+      field: 'confirm',
       component: (
         <List.Item
           extra={<Switch {...getFieldProps('confirm', { initialValue: true, valuePropName: 'checked' })} />}
@@ -65,7 +63,7 @@ const setAdvancedItems = (form) => {
   return [
     {
       type: 'custom',
-      fieldName: 'confirm',
+      field: 'confirm',
       component: (
         <TextareaItem
           {...getFieldProps('intro', {
@@ -88,6 +86,7 @@ class FormDemo extends React.PureComponent {
           form={form}
           header="个人信息"
           items={setBasicItems(form)}
+          buttonText={null}
         />
         <Form
           form={form}
