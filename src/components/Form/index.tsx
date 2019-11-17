@@ -115,7 +115,7 @@ function Form(props: FormProps) {
 
   const handleClick = () => {
     if (form) {
-      form.validateFields((err?: any[], values?: any) => {
+      form.validateFields((err?: { [k: string]: { errors: any[] } }, values?: any) => {
         if (process.env.NODE_ENV !== 'production') {
           console.log('form err:', err);
           console.log('form values', values);
