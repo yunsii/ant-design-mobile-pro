@@ -1,0 +1,22 @@
+@import '~antd-mobile/lib/style/themes/default.less';
+
+.picture-extra {
+	color: @color-text-caption;
+	font-size: @font-size-caption;
+}
+
+.required {
+	:global {
+		.am-list-item {
+			position: relative;
+
+			&::before {
+				position: absolute;
+				top: 10 * @hd;
+				left: 6 * @hd;
+				color: @brand-important;
+				content: '*';
+			}
+		}
+	}
+}
