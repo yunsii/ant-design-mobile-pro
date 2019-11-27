@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Switch, TextareaItem } from 'antd-mobile';
+import { List, Switch } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import PageWrapper from '@/components/PageWrapper';
 import Form, { ItemConfig } from '@/components/Form';
@@ -25,6 +25,18 @@ const setBasicItems: (form: any) => ItemConfig[] = (form) => {
         rules: [
           {
             required: true, message: '请输入姓名',
+          }
+        ],
+      },
+    },
+    {
+      type: 'date',
+      label: '出生日期',
+      field: 'date',
+      fieldProps: {
+        rules: [
+          {
+            required: true, message: '请选择出生日期',
           }
         ],
       },
@@ -80,6 +92,11 @@ const setAdvancedItems: (form: any) => ItemConfig[] = (form) => {
       field: 'profile',
       fieldProps: {
         initialValue: '各位评委老师好，我是...',
+        rules: [
+          {
+            required: true, message: '请填写个人简介',
+          }
+        ],
       },
       componentProps: {
         rows: 5,
