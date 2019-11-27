@@ -2,7 +2,8 @@ import React from 'react';
 import { List, Switch } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import PageWrapper from '@/components/PageWrapper';
-import Form, { ItemConfig } from '@/components/Form';
+import Form from '@/components/Form';
+import { ItemConfig } from '@/components/Form/Props';
 
 const gender = [
   {

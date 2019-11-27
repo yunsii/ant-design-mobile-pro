@@ -3,7 +3,8 @@ import { Toast } from 'antd-mobile';
 import { connect } from 'dva';
 import { createForm } from 'rc-form';
 import Paper from '@/components/Paper';
-import Form, { FormItem } from '@/components/Form';
+import Form from '@/components/Form';
+import { ItemConfig } from '@/components/Form/Props';
 import CustomIcon from '@/components/CustomIcon';
 import { Dispatch, ConnectState } from '@/models/connect';
 import styles from './Login.less';
@@ -11,7 +12,7 @@ import styles from './Login.less';
 const logo = '/logo.svg';
 const iconStyle = { fontSize: '.48rem', color: '#776e6e' };
 
-const setItems: (form: any, config: any) => FormItem[] = (form, config) => {
+const setItems: (form: any, config: any) => ItemConfig[] = (form, config) => {
   const { handleKeyPress } = config;
   return [
     {
@@ -107,6 +108,7 @@ class Login extends React.PureComponent<LoginProps> {
               style: { margin: '.64rem 0.08rem' }
             }}
             errorsFooter={false}
+            hideRequiredMark
           />
         </Paper>
       </div>
