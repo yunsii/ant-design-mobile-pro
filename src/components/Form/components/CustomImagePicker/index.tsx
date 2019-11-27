@@ -9,26 +9,21 @@ export interface ImagePickerFile {
 }
 
 export interface ImagePickerProps extends Omit<ImagePickerPropTypes, 'onChange'> {
-  filesCountLimit: number;
-  onChange: (files: ImagePickerFile[]) => void;
+  filesCountLimit?: number;
+  onChange?: (files: ImagePickerFile[]) => void;
 }
 export default class extends React.Component<ImagePickerProps> {
-  static defaultProps = {
-    filesCountLimit: 1,
-    onChange: () => { },
-  }
-
   /**
    * remove with index
    */
   onChange = (files: ImagePickerFile[], type: 'add' | 'remove', index: number) => {
-    const { onChange } = this.props;
+    const { onChange = () => { } } = this.props;
     console.log(files, type, index);
     onChange(files);
   }
 
   render() {
-    const { onChange, filesCountLimit, ...rest } = this.props;
+    const { onChange, filesCountLimit = 1, ...rest } = this.props;
     return (
       <ImagePicker
         onChange={this.onChange as any}
