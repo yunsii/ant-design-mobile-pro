@@ -9,6 +9,10 @@ export function addScriptToHead(url: string, onload?: () => void) {
   head.appendChild(script);
 }
 
+export function addScriptsToHead(urls: string[]) {
+  urls.map(item => { addScriptToHead(item); });
+}
+
 // reference: https://juejin.im/post/5c0dd7ac6fb9a049c43d7edc
 export function setRem(designWidth?: number, baseFontSize?: number) {
   const _designWidth = designWidth || defaultDesignWidth;
