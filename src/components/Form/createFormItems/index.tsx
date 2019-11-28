@@ -9,6 +9,7 @@ import {
   ComponentType,
   ItemConfig,
 } from '../Props';
+import { withProps } from '@/utils/reactUtils';
 import styles from './index.less';
 
 const WrappedImagePicker = React.forwardRef((props: WrappedImagePickerProps, ref) => {
@@ -71,6 +72,14 @@ const renderInputComponent = (form: any) => (
   }
 }
 
+export function withRequiredMark(WrappedComponent: JSX.Element) {
+  return (
+    <div key={WrappedComponent.key || undefined} className={styles.required}>
+      {WrappedComponent}
+    </div>
+  )
+}
+
 export const createFormItems = (form: any, injectError: boolean, requiredMark: boolean) => (items: ItemConfig[]) => {
   const { getFieldProps, getFieldError } = form;
   return items.map(item => {
@@ -86,27 +95,18 @@ export const createFormItems = (form: any, injectError: boolean, requiredMark: b
       return injectError && error ? { error, onErrorClick() { Toast.info(error[0]); } } : {};
     }
     const setInjectFieldProps = () => type !== 'custom' ? getFieldProps(field, { valuePropName: setValuePropName(type), ...fieldProps }) : {};
+    const setInjectProps = () => ({
+      ...componentProps as any,
+      ...setInjectFieldProps(),
+      ...setErrorProps(),
+      key: field,
+    });
 
-    const renderComponent = renderInputComponent(form)(type, label, field, componentProps, component);
-    const renderItem = renderComponent && (
-      React.cloneElement(
-        renderComponent,
-        {
-          ...componentProps as any,
-          ...setInjectFieldProps(),
-          ...setErrorProps(),
-          key: field,
-        }
-      )
-    )
+    const inputComponent = renderInputComponent(form)(type, label, field, componentProps, component);
+    const renderItem = inputComponent && withProps(setInjectProps())(inputComponent);
 
     const isRequiredField = !!_find(_get(fieldProps, 'rules', []), { required: true });
-
-    return requiredMark && isRequiredField && renderItem ? (
-      <div key={field} className={styles.required}>
-        {renderItem}
-      </div>
-    ) : renderItem;
+    return requiredMark && isRequiredField && renderItem ? withRequiredMark(renderItem) : renderItem;
   }).filter(item => item) as JSX.Element[];
 }
 
