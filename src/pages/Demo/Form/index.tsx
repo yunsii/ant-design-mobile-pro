@@ -70,6 +70,7 @@ const setBasicItems: (form: any) => ItemConfig[] = (form) => {
       },
       componentProps: {
         filesCountLimit: 5,
+        extra: '最多5张'
       },
     },
     {
@@ -117,11 +118,15 @@ class FormDemo extends React.PureComponent<any> {
           header="个人信息"
           items={setBasicItems(form)}
           buttonText={null}
-        />
+          />
         <Form
           form={form}
           header="个人简介"
           items={setAdvancedItems(form)}
+          buttonText={null}
+        />
+        <Form
+          form={form}
           onSubmit={values => console.log(values)}
         />
       </PageWrapper>
