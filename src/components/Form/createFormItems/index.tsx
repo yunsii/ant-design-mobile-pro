@@ -3,13 +3,13 @@ import { List, InputItem, Picker, TextareaItem, Toast, DatePicker } from 'antd-m
 import _values from 'lodash/values';
 import _get from 'lodash/get';
 import _find from 'lodash/find';
+import { withProps } from '@/utils/reactUtils';
 import CustomImagePicker from '../components/CustomImagePicker';
 import {
   WrappedImagePickerProps,
   ComponentType,
   ItemConfig,
 } from '../Props';
-import { withProps } from '@/utils/reactUtils';
 import styles from './index.less';
 
 const WrappedImagePicker = React.forwardRef((props: WrappedImagePickerProps, ref) => {
