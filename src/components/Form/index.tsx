@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import { List, Button } from 'antd-mobile';
+import classNames from 'classnames';
+import { List, Button, WhiteSpace } from 'antd-mobile';
 import _values from 'lodash/values';
 import _get from 'lodash/get';
 import _find from 'lodash/find';
@@ -28,7 +29,7 @@ function FormList(props: Props) {
     header,
     items = [],
     errorsFooter = true,
-    onSubmit,
+    onSubmit = () => { },
     style,
     buttonText = '确定',
     buttonProps,
@@ -46,7 +47,7 @@ function FormList(props: Props) {
           console.log('form values', values);
         }
         if (err) { return; }
-        if (onSubmit) { onSubmit(values); }
+        onSubmit(values);
       });
     }
   }
@@ -63,21 +64,24 @@ function FormList(props: Props) {
     )
   }
 
+  const errors = _values(getFieldsError(items.map(item => item.field))).filter(item => item);
   const setListProps = () => {
     const result: any = {};
     if (header) { result.renderHeader = () => header; }
-    const errors = _values(getFieldsError(items.map(item => item.field))).filter(item => item);
-    if (errorsFooter && errors.length) {
+    if (errorsFooter) {
       result.renderFooter = () => <span className={styles['error-text']}>{errors.join('，')}</span>;
     }
     return result;
   }
 
   return (
-    <List style={style} className={className} {...setListProps()}>
-      {createFormItems(form, !errorsFooter, !hideRequiredMark)(items)}
-      {buttonText && <List.Item>{renderButton()}</List.Item>}
-    </List>
+    <>
+      {items.length === 0 && <WhiteSpace size='lg' />}
+      <List style={style} className={classNames(styles['render-footer'], errors.length ? styles['show-errors'] : styles['hide-errors'], className)} {...setListProps()}>
+        {createFormItems(form, !errorsFooter, !hideRequiredMark)(items)}
+        {buttonText && <List.Item>{renderButton()}</List.Item>}
+      </List>
+    </>
   )
 }
 

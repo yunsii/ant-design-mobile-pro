@@ -1,5 +1,34 @@
 @import '~antd-mobile/lib/style/themes/default.less';
 
+// 4vw == 15 * @hd;
+
+@transition-duration: .3s;
+
+.render-footer {
+	:global {
+		.am-list-footer {
+			transition: padding-top @transition-duration ease-in-out;
+			padding: 0;
+		}
+	}
+}
+
+.show-errors {
+	:global {
+		.am-list-footer {
+			padding: 9 * @hd 15 * @hd 0 15 * @hd;
+		}
+	}
+}
+
+.hide-errors {
+	:global {
+		.am-list-footer {
+			padding: 0;
+		}
+	}
+}
+
 .error-text {
 	color: @brand-error;
 }
