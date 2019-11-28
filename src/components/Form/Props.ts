@@ -8,6 +8,7 @@ import { ImagePickerProps } from './components/CustomImagePicker';
 
 export interface WrappedImagePickerProps extends ImagePickerProps {
   extra?: string;
+  label?: string;
 }
 
 export type ComponentType =

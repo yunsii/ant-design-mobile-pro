@@ -11,6 +11,21 @@ import {
 } from '../Props';
 import styles from './index.less';
 
+const WrappedImagePicker = React.forwardRef((props: WrappedImagePickerProps, ref) => {
+  const { extra, label, ...rest } = props;
+  return (
+    <List.Item>
+      <p style={{ margin: 0 }}>{label}</p>
+      <CustomImagePicker
+        onImageClick={(index, fs) => console.log(index, fs)}
+        {...rest}
+        ref={ref as any}
+      />
+      <p className={styles['picture-extra']} style={{ margin: 0 }}>{extra}</p>
+    </List.Item>
+  )
+});
+
 const setValuePropName = (type: ComponentType) => {
   switch (type) {
     case 'picture':
@@ -43,21 +58,7 @@ const renderInputComponent = (form: any) => (
         </Picker>
       );
     case 'picture':
-      const WrappedImagePicker = React.forwardRef((props: WrappedImagePickerProps, ref) => {
-        const { extra, ...rest } = props;
-        return (
-          <List.Item>
-            <p style={{ margin: 0 }}>{label}</p>
-            <CustomImagePicker
-              onImageClick={(index, fs) => console.log(index, fs)}
-              {...rest}
-              ref={ref as any}
-            />
-            <p className={styles['picture-extra']} style={{ margin: 0 }}>{extra}</p>
-          </List.Item>
-        )
-      });
-      return <WrappedImagePicker />;
+      return <WrappedImagePicker label={label} />;
     case 'textarea':
       return <TextareaItem title={label} rows={2} placeholder='请输入' />;
     case 'date':
