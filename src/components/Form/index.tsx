@@ -64,6 +64,7 @@ function FormList(props: Props) {
     )
   }
 
+  //由于可以组装不同的表单配置，所以需要按需从各自的表单配置中取出各自的错误信息
   const errors = _values(getFieldsError(items.map(item => item.field))).filter(item => item);
   const setListProps = () => {
     const result: any = {};
