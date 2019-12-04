@@ -44,6 +44,13 @@ const renderInputComponent = (form: any) => (
   component?: JSX.Element,
 ) => {
   const { setFieldsValue } = form;
+  const { disabled } = componentProps || {};
+
+  const dismissProps = {
+    dismissText: '重置',
+    onDismiss: () => { setFieldsValue({ [field]: undefined }) },
+  };
+
   switch (type) {
     case 'custom':
       return component;
@@ -51,21 +58,28 @@ const renderInputComponent = (form: any) => (
       return (
         <Picker
           cols={1}
-          dismissText='重置'
-          onDismiss={() => { setFieldsValue({ [field]: undefined }) }}
+          {...dismissProps}
           {...componentProps}
         >
-          <List.Item arrow="horizontal">{label}</List.Item>
+          <List.Item arrow="horizontal" disabled={disabled}>{label}</List.Item>
         </Picker>
       );
     case 'picture':
-      return <WrappedImagePicker label={label} />;
+      return <WrappedImagePicker {...componentProps} label={label} />;
     case 'textarea':
-      return <TextareaItem title={label} rows={2} placeholder='请输入' />;
+      return <TextareaItem title={label} rows={2} placeholder='请输入' {...componentProps} />;
     case 'date':
     case 'time':
     case 'datetime':
-      return <DatePicker mode={type}><List.Item arrow="horizontal">{label}</List.Item></DatePicker>;
+      return (
+        <DatePicker
+          {...dismissProps}
+          {...componentProps}
+          mode={type}
+        >
+          <List.Item arrow="horizontal" disabled={disabled}>{label}</List.Item>
+        </DatePicker>
+      );
     case 'string':
     default:
       return <InputItem placeholder='请输入' clear {...componentProps}>{label}</InputItem>;
@@ -81,12 +95,12 @@ export function withRequiredMark(WrappedComponent: JSX.Element) {
 }
 
 export const createFormItems = (form: any, injectError: boolean, requiredMark: boolean) => (items: ItemConfig[]) => {
-  const { getFieldProps, getFieldError } = form;
+  const { getFieldError, getFieldDecorator } = form;
   return items.map(item => {
     const { type = 'string', label, field, componentProps, component, fieldProps = {} } = item;
 
     if (type === 'hidden') {
-      getFieldProps(field, { initialValue: fieldProps.initialValue });
+      getFieldDecorator(field, { initialValue: fieldProps.initialValue });
       return null;
     }
 
@@ -94,19 +108,27 @@ export const createFormItems = (form: any, injectError: boolean, requiredMark: b
       const error = getFieldError(field);
       return injectError && error ? { error, onErrorClick() { Toast.info(error[0]); } } : {};
     }
-    const setInjectFieldProps = () => type !== 'custom' ? getFieldProps(field, { valuePropName: setValuePropName(type), ...fieldProps }) : {};
     const setInjectProps = () => ({
-      ...componentProps as any,
-      ...setInjectFieldProps(),
       ...setErrorProps(),
       key: field,
     });
 
     const inputComponent = renderInputComponent(form)(type, label, field, componentProps, component);
-    const renderItem = inputComponent && withProps(setInjectProps())(inputComponent);
+    const setRenderItem = () => {
+      if (inputComponent) {
+        const withPropsComponent = withProps(setInjectProps())(inputComponent);
+        return getFieldDecorator(field, {
+          valuePropName: setValuePropName(type),
+          ...fieldProps,
+        })(withPropsComponent);
+      }
+      return null;
+    }
 
     const isRequiredField = !!_find(_get(fieldProps, 'rules', []), { required: true });
-    return requiredMark && isRequiredField && renderItem ? withRequiredMark(renderItem) : renderItem;
+    const renderItem = setRenderItem();
+    const hasRequiredMark = requiredMark && isRequiredField && renderItem;
+    return hasRequiredMark ? withRequiredMark(renderItem) : renderItem;
   }).filter(item => item) as JSX.Element[];
 }
 
