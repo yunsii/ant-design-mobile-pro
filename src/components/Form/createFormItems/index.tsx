@@ -3,7 +3,7 @@ import { List, InputItem, Picker, TextareaItem, Toast, DatePicker } from 'antd-m
 import _values from 'lodash/values';
 import _get from 'lodash/get';
 import _find from 'lodash/find';
-import { withProps } from '@/utils/reactUtils';
+import { injectProps } from '@/utils/reactUtils';
 import CustomImagePicker from '../components/CustomImagePicker';
 import {
   WrappedImagePickerProps,
@@ -116,11 +116,11 @@ export const createFormItems = (form: any, injectError: boolean, requiredMark: b
     const inputComponent = renderInputComponent(form)(type, label, field, componentProps, component);
     const setRenderItem = () => {
       if (inputComponent) {
-        const withPropsComponent = withProps(setInjectProps())(inputComponent);
+        const injectPropsComponent = injectProps(setInjectProps())(inputComponent);
         return getFieldDecorator(field, {
           valuePropName: setValuePropName(type),
           ...fieldProps,
-        })(withPropsComponent);
+        })(injectPropsComponent);
       }
       return null;
     }
