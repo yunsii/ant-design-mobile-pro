@@ -4,6 +4,7 @@ import _find from 'lodash/find';
 import { InputItemProps } from 'antd-mobile/lib/input-item'
 import { TextareaItemProps } from 'antd-mobile/lib/textarea-item'
 import { PickerPropsType } from 'antd-mobile/lib/picker/PropsType'
+import { DatePickerPropsType } from 'antd-mobile/lib/date-picker/PropsType'
 import { ImagePickerProps } from './components/CustomImagePicker';
 
 export interface WrappedImagePickerProps extends ImagePickerProps {
@@ -24,6 +25,7 @@ export type ComponentType =
 
 export type ComponentProps =
   | PickerPropsType
+  | DatePickerPropsType
   | WrappedImagePickerProps
   | TextareaItemProps
   | InputItemProps
