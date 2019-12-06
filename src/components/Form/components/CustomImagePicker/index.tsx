@@ -9,6 +9,7 @@ export interface ImagePickerFile {
 }
 
 export interface ImagePickerProps extends Omit<ImagePickerPropTypes, 'onChange'> {
+  disabled?: boolean;
   filesCountLimit?: number;
   onChange?: (files: ImagePickerFile[]) => void;
 }
@@ -23,9 +24,10 @@ export default class extends React.Component<ImagePickerProps> {
   }
 
   render() {
-    const { onChange, filesCountLimit = 1, ...rest } = this.props;
+    const { onChange, filesCountLimit = 1, disabled, ...rest } = this.props;
     return (
       <ImagePicker
+        disableDelete={disabled}
         onChange={this.onChange as any}
         selectable={!rest.files || rest.files.length < (isNaN(filesCountLimit) ? 1 : filesCountLimit)}
         {...rest}

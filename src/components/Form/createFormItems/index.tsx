@@ -15,7 +15,7 @@ import styles from './index.less';
 const WrappedImagePicker = React.forwardRef((props: WrappedImagePickerProps, ref) => {
   const { extra, label, ...rest } = props;
   return (
-    <List.Item>
+    <List.Item disabled={rest.disabled}>
       <p style={{ margin: 0 }}>{label}</p>
       <CustomImagePicker
         onImageClick={(index, fs) => console.log(index, fs)}
