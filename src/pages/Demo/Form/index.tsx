@@ -20,12 +20,25 @@ const setBasicItems: (form: any) => ItemConfig[] = (form) => {
   const { getFieldProps } = form;
   return [
     {
+      type: 'string',
       label: '姓名',
       field: 'name',
       fieldProps: {
         rules: [
           {
             required: true, message: '请输入姓名',
+          }
+        ],
+      },
+    },
+    {
+      type: 'password',
+      label: '密码',
+      field: 'password',
+      fieldProps: {
+        rules: [
+          {
+            required: true, message: '请输入密码',
           }
         ],
       },
