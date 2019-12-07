@@ -81,8 +81,15 @@ const renderInputComponent = (form: any) => (
         </DatePicker>
       );
     case 'string':
+    case 'number':
+    case 'password':
+    case 'text':
+    case 'bankCard':
+    case 'phone':
+    case 'digit':
+    case 'money':
     default:
-      return <InputItem placeholder='请输入' clear {...componentProps}>{label}</InputItem>;
+      return <InputItem placeholder='请输入' clear {...componentProps} type={type !== 'string' ? type : 'text'}>{label}</InputItem>;
   }
 }
 

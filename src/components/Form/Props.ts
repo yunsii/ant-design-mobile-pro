@@ -20,7 +20,15 @@ export type ComponentType =
   | "time"
   | "datetime"
   | "textarea"
+
   | "string"
+  | "number" 
+  | "password" 
+  | "text" 
+  | "bankCard" 
+  | "phone" 
+  | "digit" 
+  | "money"
   | "hidden"
 
 export type ComponentProps =
