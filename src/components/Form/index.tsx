@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { List, Button, WhiteSpace } from 'antd-mobile';
+import { List, Button } from 'antd-mobile';
 import _values from 'lodash/values';
 import _get from 'lodash/get';
 import _find from 'lodash/find';
@@ -76,13 +76,10 @@ function FormList(props: Props) {
   }
 
   return (
-    <>
-      {items.length === 0 && <WhiteSpace size='lg' />}
-      <List style={style} className={classNames(styles['render-footer'], errors.length ? styles['show-errors'] : styles['hide-errors'], className)} {...setListProps()}>
-        {createFormItems(form, !errorsFooter, !hideRequiredMark)(items)}
-        {buttonText && <List.Item>{renderButton()}</List.Item>}
-      </List>
-    </>
+    <List style={style} className={classNames(styles['render-footer'], errors.length ? styles['show-errors'] : styles['hide-errors'], className)} {...setListProps()}>
+      {createFormItems(form, !errorsFooter, !hideRequiredMark)(items)}
+      {buttonText && <List.Item>{renderButton()}</List.Item>}
+    </List>
   )
 }
 
