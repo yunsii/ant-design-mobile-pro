@@ -32,7 +32,7 @@ export function DataLoading<T>({ loading, data, children }: DataLoadingProps<T>)
   if (loading) {
     return <CustomResult message={<Loading />} />;
   }
-  if ((Array.isArray(data) && !data.length) || !Object.keys(data).length) {
+  if ((Array.isArray(data) && !data.length) || !Object.keys(data).length || !data) {
     return <CustomResult message='暂无数据' />;
   }
   return children;
