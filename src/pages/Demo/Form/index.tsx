@@ -1,6 +1,8 @@
 import React from 'react';
-import { List, Switch } from 'antd-mobile';
+import { List, Switch, WingBlank, WhiteSpace } from 'antd-mobile';
 import { createForm } from 'rc-form';
+import Paper from '@/components/Paper';
+import Description from '@/components/Description';
 import PageWrapper from '@/components/PageWrapper';
 import Form from '@/components/Form';
 import { ItemConfig } from '@/components/Form/Props';
@@ -126,12 +128,20 @@ class FormDemo extends React.PureComponent<any> {
     const { form } = this.props;
     return (
       <PageWrapper title='表单' backable>
+        <WhiteSpace size='lg' />
+        <WingBlank>
+          <Paper>
+            <Description label='Firefox'>A free, open source, cross-platform, graphical web browser developed by the Mozilla Corporation and hundreds of volunteers.</Description>
+            <Description label='Firefox'>A free, open source, cross-platform, graphical web browser developed by the Mozilla Corporation and hundreds of volunteers.</Description>
+            <Description label='Firefox'>A free, open source, cross-platform, graphical web browser developed by the Mozilla Corporation and hundreds of volunteers.</Description>
+          </Paper>
+        </WingBlank>
         <Form
           form={form}
           header="个人信息"
           items={setBasicItems(form)}
           buttonText={null}
-          />
+        />
         <Form
           form={form}
           header="个人简介"
