@@ -1,0 +1,36 @@
+@import '~antd-mobile/lib/style/themes/default.less';
+
+.description {
+	margin: 0;
+	padding-bottom: 12 * @hd;
+}
+
+.label {
+	display: table-cell;
+	color: @color-text-base;
+	font-size: @font-size-base;
+	white-space: nowrap;
+
+	&::after {
+		content: ':';
+		position: relative;
+		top: -0.5px;
+		margin: 0 8px 0 2px;
+	}
+}
+
+.labelVertical {
+	display: block;
+	padding-bottom: 8 * @hd;
+}
+
+.text {
+	display: table-cell;
+	color: rgba(0, 0, 0, 0.65);
+	font-size: @font-size-base;
+}
+
+.textVertical {
+	display: block;
+	padding-bottom: 4 * @hd;
+}
