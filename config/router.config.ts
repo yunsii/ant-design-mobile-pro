@@ -33,6 +33,10 @@ export default [
             path: '/demo/amap',
             component: './Demo/AMap',
           },
+          {
+            path: '/demo/avatar',
+            component: './Demo/Avatar',
+          },
         ]
       },
       {
