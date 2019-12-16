@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import CustomResult from '@/components/CustomAntdMobile/CustomResult';
 import _repeat from 'lodash/repeat';
+import _isFunction from 'lodash/isFunction';
+
+export function isEmptyData<T>(data: T) {
+  const isEmptyArray = Array.isArray(data) && !data.length;
+  return isEmptyArray || !data || !Object.keys(data).length;
+}
 
 const Loading: React.FC<{}> = () => {
   const [dotNums, setDotNums] = useState(0);
@@ -22,20 +28,20 @@ const Loading: React.FC<{}> = () => {
   )
 }
 
-export interface DataLoadingProps<T = any> extends React.PropsWithoutRef<React.Props<T>> {
+export interface AsyncRenderProps<T = any> extends React.PropsWithoutRef<React.Props<T>> {
   loading: boolean;
-  data: T | T[];
-  children: any;
+  data: T;
+  children: (data: T) => JSX.Element | JSX.Element;
 }
 
-export function DataLoading<T>({ loading, data, children }: DataLoadingProps<T>): React.ReactElement {
+export function AsyncRender<T>({ loading, data, children }: AsyncRenderProps<T>): JSX.Element {
   if (loading) {
     return <CustomResult message={<Loading />} />;
   }
-  if ((Array.isArray(data) && !data.length) || !Object.keys(data).length || !data) {
+  if (isEmptyData(data)) {
     return <CustomResult message='暂无数据' />;
   }
-  return children;
+  return _isFunction(children) ? children(data) : children;
 }
 
-export default DataLoading;
+export default AsyncRender;
