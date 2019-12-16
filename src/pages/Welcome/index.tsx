@@ -92,7 +92,8 @@ const menuItems = [
   },
   {
     icon: <MenuIcon type='icon-empty' color='#ae93e7' />,
-    text: '－－－－',
+    text: 'Avatar',
+    link: '/demo/avatar',
   },
   {
     icon: <MenuIcon type='icon-empty' color='#ae93e7' />,
@@ -150,10 +151,9 @@ class Welcome extends React.PureComponent<CenterProps> {
           <div className={styles.userInfo}>
             <Avatar
               src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
-              size={120}
               shape='square'
-              style={{ marginLeft: '.4rem' }}
-              bordered
+              size={100}
+              style={{ border: '1px solid #dfdfdf' }}
             />
             <span className={styles.username}>admin</span>
             <span className={styles.lastLogin}>2019-8-14 09:47:07</span>
