@@ -4,6 +4,7 @@ import { List, Button } from 'antd-mobile';
 import _values from 'lodash/values';
 import _get from 'lodash/get';
 import _find from 'lodash/find';
+import _debounce from 'lodash/debounce';
 import { ButtonProps } from 'antd-mobile/lib/button'
 import FormContext, { FormProvider } from './FormContext';
 import createFormItems from './createFormItems';
@@ -39,7 +40,7 @@ function FormList(props: Props) {
   const form = useContext(FormContext);
   const { getFieldsError } = form;
 
-  const handleClick = () => {
+  const handleClick = _debounce(() => {
     if (form) {
       form.validateFields((err?: { [k: string]: { errors: any[] } }, values?: any) => {
         if (process.env.NODE_ENV !== 'production') {
@@ -50,7 +51,7 @@ function FormList(props: Props) {
         onSubmit(values);
       });
     }
-  }
+  }, 400);
 
   const renderButton = () => {
     return (
