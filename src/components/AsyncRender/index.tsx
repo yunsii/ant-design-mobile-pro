@@ -31,7 +31,7 @@ const Loading: React.FC<{}> = () => {
 export interface AsyncRenderProps<T = any> extends React.PropsWithoutRef<React.Props<T>> {
   loading: boolean;
   data: T;
-  children: (data: T) => JSX.Element | JSX.Element;
+  children: ((data: T) => JSX.Element) | JSX.Element;
 }
 
 export function AsyncRender<T>({ loading, data, children }: AsyncRenderProps<T>): JSX.Element {
