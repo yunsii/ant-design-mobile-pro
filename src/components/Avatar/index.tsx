@@ -127,8 +127,6 @@ export default class Avatar extends React.Component<AvatarProps, AvatarState> {
       [useStyles(`${prefixCls}-icon`)]: icon,
     });
 
-    console.log(classString);
-
     const sizeStyle: React.CSSProperties =
       typeof size === 'number'
         ? {
