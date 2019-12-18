@@ -2,11 +2,11 @@ import React from 'react';
 import { Modal } from 'antd-mobile';
 import { ModalProps } from 'antd-mobile/lib/modal/Modal';
 
-export interface CustomModalProps extends ModalProps {
+export interface SlideUpModalProps extends ModalProps {
   children: any;
 }
 
-export default function CustomModal(props: CustomModalProps) {
+export default function SlideUpModal(props: SlideUpModalProps) {
   const { children, ...rest } = props;
   return (
     <Modal
