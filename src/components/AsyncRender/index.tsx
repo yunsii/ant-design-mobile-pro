@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import CustomResult from '@/components/CustomAntdMobile/CustomResult';
+import CustomResult from '@/components/custom-antd-mobile/CustomResult';
 import _repeat from 'lodash/repeat';
 import _isFunction from 'lodash/isFunction';
 
