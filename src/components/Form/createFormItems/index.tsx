@@ -18,7 +18,6 @@ const WrappedImagePicker = React.forwardRef((props: WrappedImagePickerProps, ref
     <List.Item disabled={rest.disabled}>
       <p style={{ margin: 0 }}>{label}</p>
       <CustomImagePicker
-        onImageClick={(index, fs) => console.log(index, fs)}
         {...rest}
         ref={ref as any}
       />
