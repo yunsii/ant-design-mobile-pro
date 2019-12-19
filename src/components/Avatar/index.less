@@ -1,4 +1,5 @@
 @import '~antd-mobile/lib/style/themes/default.less';
+@import '../styles/index.less';
 
 @avatar-size-base: 32 * @hd;
 @avatar-size-lg: 40 * @hd;
@@ -13,54 +14,56 @@
 @avatar-prefix-cls: ~'avatar';
 
 .@{avatar-prefix-cls} {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  color: @avatar-color;
-  white-space: nowrap;
-  text-align: center;
-  vertical-align: middle;
-  background: @avatar-bg;
+	.reset-component();
 
-  &-image {
-    background: transparent;
-  }
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	color: @avatar-color;
+	white-space: nowrap;
+	text-align: center;
+	vertical-align: middle;
+	background: @avatar-bg;
 
-  .avatar-size(@avatar-size-base, @avatar-font-size-base);
+	&-image {
+		background: transparent;
+	}
 
-  &-lg {
-    .avatar-size(@avatar-size-lg, @avatar-font-size-lg);
-  }
+	.avatar-size(@avatar-size-base, @avatar-font-size-base);
 
-  &-sm {
-    .avatar-size(@avatar-size-sm, @avatar-font-size-sm);
-  }
+	&-lg {
+		.avatar-size(@avatar-size-lg, @avatar-font-size-lg);
+	}
 
-  &-square {
-    border-radius: @avatar-border-radius;
-  }
+	&-sm {
+		.avatar-size(@avatar-size-sm, @avatar-font-size-sm);
+	}
 
-  &>img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+	&-square {
+		border-radius: @avatar-border-radius;
+	}
+
+	& > img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
 }
 
 .avatar-size(@size, @font-size) {
-  width: @size;
-  height: @size;
-  line-height: @size;
-  border-radius: 50%;
+	width: @size;
+	height: @size;
+	line-height: @size;
+	border-radius: 50%;
 
-  &-string {
-    position: absolute;
-    left: 50%;
-    transform-origin: 0 center;
-  }
+	&-string {
+		position: absolute;
+		left: 50%;
+		transform-origin: 0 center;
+	}
 
-  &.@{avatar-prefix-cls}-icon {
-    font-size: @font-size;
-  }
+	&.@{avatar-prefix-cls}-icon {
+		font-size: @font-size;
+	}
 }

@@ -1,11 +1,12 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import CustomIcon from '@/components/CustomIcon';
-import styles from './index.less';
 import { pxToRem } from '@/utils/customUtils';
+import { useStyles } from '../_util/style';
+import styles from './index.less';
 
-function useStyles(className: string) {
-  return styles[className];
+function useAvatarStyles(className: string) {
+  return useStyles(styles)(className);
 }
 
 // ref: https://github.com/ant-design/ant-design/blob/master/components/avatar/index.tsx
@@ -117,14 +118,15 @@ export default class Avatar extends React.Component<AvatarProps, AvatarState> {
     const prefixCls = 'avatar';
 
     const sizeCls = classNames({
-      [useStyles(`${prefixCls}-lg`)]: size === 'large',
-      [useStyles(`${prefixCls}-sm`)]: size === 'small',
+      [useAvatarStyles(`${prefixCls}-lg`)]: size === 'large',
+      [useAvatarStyles(`${prefixCls}-sm`)]: size === 'small',
     });
 
-    const classString = classNames(useStyles(prefixCls), className, sizeCls, {
-      [useStyles(`${prefixCls}-${shape}`)]: shape,
-      [useStyles(`${prefixCls}-image`)]: src && isImgExist,
-      [useStyles(`${prefixCls}-icon`)]: icon,
+
+    const classString = classNames(useAvatarStyles(prefixCls), className, sizeCls, {
+      [useAvatarStyles(`${prefixCls}-${shape}`)]: shape,
+      [useAvatarStyles(`${prefixCls}-image`)]: src && isImgExist,
+      [useAvatarStyles(`${prefixCls}-icon`)]: icon,
     });
 
     const sizeStyle: React.CSSProperties =
@@ -164,7 +166,7 @@ export default class Avatar extends React.Component<AvatarProps, AvatarState> {
             : {};
         children = (
           <span
-            className={useStyles(`${prefixCls}-string`)}
+            className={useAvatarStyles(`${prefixCls}-string`)}
             ref={(node: HTMLElement) => (this.avatarChildren = node)}
             style={{ ...sizeChildrenStyle, ...childrenStyle }}
           >
@@ -179,7 +181,7 @@ export default class Avatar extends React.Component<AvatarProps, AvatarState> {
 
         children = (
           <span
-            className={useStyles(`${prefixCls}-string`)}
+            className={useAvatarStyles(`${prefixCls}-string`)}
             style={{ opacity: 0 }}
             ref={(node: HTMLElement) => (this.avatarChildren = node)}
           >
