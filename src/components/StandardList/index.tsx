@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { WingBlank, ListView, ActivityIndicator } from 'antd-mobile';
 import { ListViewProps } from 'antd-mobile/lib/list-view';
+import classNames from 'classnames';
+import styles from './index.less';
 
 export let allData: any[] = [];
 
@@ -62,7 +64,7 @@ export default function StandardList(props: StandardListProps) {
   }
 
   return (
-    <div style={style} className={className}>
+    <div style={style} className={classNames(styles.standardList, className)}>
       <WingBlank>
         {separator(0, 0)}
         <ListView
