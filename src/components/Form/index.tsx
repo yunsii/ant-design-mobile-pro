@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { List, Button } from 'antd-mobile';
+import { List, Button, WhiteSpace } from 'antd-mobile';
 import _values from 'lodash/values';
 import _get from 'lodash/get';
 import _find from 'lodash/find';
@@ -85,9 +85,12 @@ function FormList(props: Props) {
       )}
 
       {buttonText && (
-        <List>
-          <List.Item>{renderButton()}</List.Item>
-        </List>
+        <>
+          <WhiteSpace />
+          <List>
+            <List.Item>{renderButton()}</List.Item>
+          </List>
+        </>
       )}
     </div>
   )
