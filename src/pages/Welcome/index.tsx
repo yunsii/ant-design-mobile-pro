@@ -91,12 +91,12 @@ const menuItems = [
     link: '/demo/amap',
   },
   {
-    icon: <MenuIcon type='icon-empty' color='#ae93e7' />,
+    icon: <MenuIcon type='icon-star' color='#ae93e7' />,
     text: 'Avatar',
     link: '/demo/avatar',
   },
   {
-    icon: <MenuIcon type='icon-empty' color='#ae93e7' />,
+    icon: <MenuIcon type='icon-empty' color='#43e7ae' />,
     text: '－－－－',
   },
   {
