@@ -64,10 +64,10 @@ class StandardListDemo extends React.PureComponent {
       <Card
         key={rowID}
       >
-        <Card.Header title={`${rowData.id}. ${rowData.title}`} />
+        <Card.Header style={{ fontWeight: 'bold' }} title={`${rowData.id}. ${rowData.title}`} />
         <Card.Body>
           <div style={{ lineHeight: 1 }}>
-            <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>{rowData.desc}</div>
+            <div style={{ marginBottom: '8px' }}>{rowData.desc}</div>
           </div>
         </Card.Body>
       </Card>
