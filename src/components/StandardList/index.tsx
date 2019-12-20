@@ -4,46 +4,48 @@ import { ListViewProps } from 'antd-mobile/lib/list-view';
 import classNames from 'classnames';
 import styles from './index.less';
 
-export let allData: any[] = [];
-
-export function setAllData(data) {
-  allData = data;
+export interface StandardListData<T> {
+  list: T[];
+  pagination: {
+    current: number;
+    last: number;
+  },
 }
 
-export interface StandardListProps extends ListViewProps {
-  data: {
-    list: any[],
-    pagination: {
-      current: number,
-      last: number,
-    },
-  };
-  loading?: boolean;
-  initData?: () => void;
-  moreData?: () => void;
+export interface StandardListProps<T> extends Omit<ListViewProps, 'dataSource'> {
+  getData: (current: number) => StandardListData<T> | Promise<StandardListData<T>>;
   onUnmount?: () => void;
   style?: React.CSSProperties;
   className?: string;
 }
 
-export default function StandardList(props: StandardListProps) {
-  const { data, loading, initData, moreData, onUnmount, style, className, ...rest } = props;
+export default function StandardList<T>(props: StandardListProps<T>) {
+  const { getData, onUnmount, style, className, ...rest } = props;
+  const [loading, setLoading] = useState<boolean>(true);
+  const [pageData, setPageData] = useState<StandardListData<T>>({ list: [], pagination: { current: 1, last: 10 } });
   const [list, setList] = useState(new ListView.DataSource({
     rowHasChanged: (row1, row2) => row1 !== row2,
   }));
 
+  async function fetchData(current: number = 1) {
+    setLoading(true);
+    const data = await getData(current);
+    const mergeData = {
+      list: [...pageData.list, ...data.list],
+      pagination: data.pagination,
+    };
+    setPageData(mergeData);
+    setList(list.cloneWithRows(mergeData.list));
+    setLoading(false);
+  }
+
   useEffect(() => {
-    if (initData) { initData() };
+    fetchData();
+
     return () => {
-      allData = [];
       if (onUnmount) { onUnmount(); }
     };
   }, []);
-
-  useEffect(() => {
-    allData = [...allData, ...data.list];
-    setList(list.cloneWithRows(allData));
-  }, [data])
 
   const listViewEl = useRef(null);
 
@@ -58,9 +60,9 @@ export default function StandardList(props: StandardListProps) {
   );
 
   const onEndReached = () => {
-    const { pagination: { current, last } } = data;
+    const { pagination: { current, last } } = pageData!;
     if (current >= last) { return; }
-    if (moreData) { moreData(); }
+    fetchData(current + 1);
   }
 
   return (
@@ -87,12 +89,4 @@ export default function StandardList(props: StandardListProps) {
       <ActivityIndicator toast animating={loading} />
     </div>
   )
-}
-
-StandardList.defaultProps = {
-  data: {
-    list: [],
-    pagination: {},
-  },
-  loading: false,
 }
