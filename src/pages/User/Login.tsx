@@ -1,5 +1,5 @@
 import React from 'react';
-import { Toast } from 'antd-mobile';
+import { Toast, Button } from 'antd-mobile';
 import { connect } from 'dva';
 import { createForm } from 'rc-form';
 import Paper from '@/components/Paper';
@@ -65,7 +65,6 @@ class Login extends React.PureComponent<LoginProps> {
     form.validateFields((err, values) => {
       console.log(err, values);
       if (err) {
-        Toast.info('请输入正确的帐号密码', 2, undefined, false);
         return;
       };
       dispatch({
@@ -101,15 +100,18 @@ class Login extends React.PureComponent<LoginProps> {
             style={{ marginTop: '.64rem' }}
             form={form}
             items={setItems(form, { handleKeyPress: this.handleKeyPress })}
-            onSubmit={this.handleSubmit}
-            buttonText='登录'
-            buttonProps={{
-              loading,
-              style: { margin: '.64rem 0.08rem' }
-            }}
+            buttonText={null}
             errorsFooter={false}
             hideRequiredMark
           />
+          <Button
+            type='primary'
+            style={{ margin: '.64rem 0.08rem' }}
+            loading={loading}
+            onClick={this.handleSubmit}
+          >
+            登录
+          </Button>
         </Paper>
       </div>
     );
