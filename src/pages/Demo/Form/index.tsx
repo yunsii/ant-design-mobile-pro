@@ -148,7 +148,6 @@ class FormDemo extends React.PureComponent<any> {
           items={setAdvancedItems(form)}
           onSubmit={values => console.log(values)}
         />
-        <WhiteSpace />
       </PageWrapper>
     );
   }
