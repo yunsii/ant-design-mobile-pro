@@ -77,10 +77,19 @@ function FormList(props: Props) {
   }
 
   return (
-    <List style={style} className={classNames(styles['render-footer'], errors.length ? styles['show-errors'] : styles['hide-errors'], className)} {...setListProps()}>
-      {createFormItems(form, !errorsFooter, !hideRequiredMark)(items)}
-      {buttonText && <List.Item>{renderButton()}</List.Item>}
-    </List>
+    <div>
+      {!!items.length && (
+        <List style={style} className={classNames(styles['render-footer'], errors.length ? styles['show-errors'] : styles['hide-errors'], className)} {...setListProps()}>
+          {createFormItems(form, !errorsFooter, !hideRequiredMark)(items)}
+        </List>
+      )}
+
+      {buttonText && (
+        <List>
+          <List.Item>{renderButton()}</List.Item>
+        </List>
+      )}
+    </div>
   )
 }
 
