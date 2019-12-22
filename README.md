@@ -10,8 +10,9 @@
 
 ## 已有特性
 
-* 高清解决方案
-* 方便使用 iconfont
+* 代码分割
+* 高清方案
+* 结合 CustomIcon 快速使用 iconfont
 
 ## 核心组件
 
@@ -27,3 +28,7 @@
 * [Spin](/src/components/Spin/index.tsx) - 从 ant-design 迁移的 [Spin](https://ant.design/components/spin-cn/) 组件
 * [StandardList](/src/components/StandardList/index.tsx) - 基于 ListView 封装的快速实现数据长列表渲染的组件
 * [Statistics](/src/components/Statistics/index.tsx) - 统计数字展示
+
+## 一些问题
+
+1. 实测发现 fastclick 的功能在 iOS 设备上会导致输入框点击多次才有响应，故只在非 iOS 设备上[添加](/src/global.ts#L15)该功能。
