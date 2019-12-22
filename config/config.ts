@@ -9,7 +9,10 @@ const plugins: IPlugin[] = [
   ['umi-plugin-react', {
     antd: false,
     dva: true,
-    dynamicImport: { webpackChunkName: true },
+    dynamicImport: {
+      loadingComponent: './components/PageLoading/index',
+      webpackChunkName: true,
+    },
     title: 'ant-design-mobile-pro',
     dll: false,
     locale: {
