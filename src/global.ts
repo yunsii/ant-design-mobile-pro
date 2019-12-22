@@ -24,4 +24,4 @@ if (!isIOSEnv()) {
 
 Toast.config({
   mask: false,
-})
+});
