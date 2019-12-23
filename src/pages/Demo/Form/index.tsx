@@ -4,7 +4,7 @@ import { createForm } from 'rc-form';
 import Paper from '@/components/Paper';
 import Description from '@/components/Description';
 import PageWrapper from '@/components/PageWrapper';
-import AsyncRender from '@/components/AsyncRender';
+import { AsyncRenderWithFetch } from '@/components/AsyncRender';
 import Form from '@/components/Form';
 import { ItemConfig } from '@/components/Form/Props';
 import { getMockData } from '../mock';
@@ -133,13 +133,13 @@ class FormDemo extends React.PureComponent<any> {
         <WhiteSpace size='lg' />
         <WingBlank>
           <Paper>
-            <AsyncRender getData={async () => (await getMockData(1, { wait: 600 })).list}>
+            <AsyncRenderWithFetch getData={async () => (await getMockData(1, { wait: 600 })).list}>
               {(data) => {
                 return data.slice(0, 3).map(item => {
                   return <Description key={item.id} label={item.title}>{item.desc}</Description>
                 })
               }}
-            </AsyncRender>
+            </AsyncRenderWithFetch>
             {/* <Description label='Firefox'>A free, open source, cross-platform, graphical web browser developed by the Mozilla Corporation and hundreds of volunteers.</Description>
             <Description label='Firefox'>A free, open source, cross-platform, graphical web browser developed by the Mozilla Corporation and hundreds of volunteers.</Description>
             <Description label='Firefox'>A free, open source, cross-platform, graphical web browser developed by the Mozilla Corporation and hundreds of volunteers.</Description> */}
