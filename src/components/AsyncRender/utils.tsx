@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import CustomResult from '@/components/custom-antd-mobile/CustomResult';
 import _repeat from 'lodash/repeat';
 import _isFunction from 'lodash/isFunction';
-import styles from './index.less';
+import styles from './utils.less';
 
 export function isEmptyData<T>(data: T) {
   const isEmptyArray = Array.isArray(data) && !data.length;
   return isEmptyArray || !data || !Object.keys(data).length;
 }
 
-const Loading: React.FC<{}> = () => {
+export const Loading: React.FC<{}> = () => {
   const [dotNums, setDotNums] = useState(0);
   const dots = 3;
 
@@ -29,32 +29,11 @@ const Loading: React.FC<{}> = () => {
   )
 }
 
-export interface AsyncRenderProps<T = any> extends React.PropsWithoutRef<React.Props<T>> {
-  getData: () => Promise<T> | T;
-  children: (data: T) => any;
-}
-
-export function AsyncRender<T>({ getData, children }: AsyncRenderProps<T>): any {
-  const [loading, setLoading] = useState<boolean>(true);
-  const [data, setData] = useState<T>();
-
-  useEffect(() => {
-    async function fetchData() {
-      const data = await getData();
-      setLoading(false);
-      setData(data);
-    }
-
-    fetchData();
-  }, [])
-
+export function checkAndRender<T>(loading: boolean, data: T) {
   if (loading) {
     return <CustomResult className={styles.result} message={<Loading />} />;
   }
   if (isEmptyData(data)) {
     return <CustomResult className={styles.result} message='暂无数据' />;
   }
-  return children(data!);
 }
-
-export default AsyncRender;
