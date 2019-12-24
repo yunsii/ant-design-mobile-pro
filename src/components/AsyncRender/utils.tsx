@@ -36,4 +36,5 @@ export function checkAndRender<T>(loading: boolean, data: T) {
   if (isEmptyData(data)) {
     return <CustomResult className={styles.result} message='暂无数据' />;
   }
+  return null;
 }
