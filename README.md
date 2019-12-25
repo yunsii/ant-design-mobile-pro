@@ -16,7 +16,7 @@
 
 ## 核心组件
 
-* [AsyncRender](/src/components/AsyncRender/index.tsx) - 数据异步渲染组件
+* [AsyncRender](/src/components/AsyncRender/index.ts) - 数据异步渲染组件
 * [Avatar](/src/components/Avatar/index.tsx) - 从 ant-design 迁移的 [Avatar](https://ant.design/components/avatar-cn/) 组件
 * [CustomIcon](/src/components/CustomIcon/index.tsx) - 配置 `type` 即可使用 iconfont 中的图标
 * [Description](/src/components/Description/index.tsx) - 描述字段
