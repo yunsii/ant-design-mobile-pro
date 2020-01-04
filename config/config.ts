@@ -2,6 +2,9 @@ import { IConfig, IPlugin } from 'umi-types';
 import pageRoutes from './router.config';
 import webpackPlugin from './plugin.config';
 import pxToViewPort from 'postcss-px-to-viewport';
+const defaultSettings = require('../src/defaultSettings');
+
+const { base, publicPath } = defaultSettings;
 
 // ref: https://umijs.org/config/
 const plugins: IPlugin[] = [
@@ -33,8 +36,8 @@ const plugins: IPlugin[] = [
 
 export default {
   // code split need base url
-  base: '/ant-design-mobile-pro/',
-  publicPath: '/ant-design-mobile-pro/',
+  base,
+  publicPath,
   define: {
     APP_TYPE: process.env.APP_TYPE || '',
   },

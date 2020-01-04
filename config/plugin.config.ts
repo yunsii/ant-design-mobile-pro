@@ -1,3 +1,7 @@
+const defaultSettings = require('../src/defaultSettings');
+
+const { publicPath } = defaultSettings;
+
 export default (config: any) => {
-  // console.log(config);
+  config.output.publicPath(publicPath);
 }
