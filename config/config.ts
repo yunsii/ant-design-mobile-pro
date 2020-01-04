@@ -33,8 +33,8 @@ const plugins: IPlugin[] = [
 
 export default {
   // code split need base url
-  base: '/',
-  publicPath: '/',
+  base: '/ant-design-mobile-pro/',
+  publicPath: '/ant-design-mobile-pro/',
   define: {
     APP_TYPE: process.env.APP_TYPE || '',
   },

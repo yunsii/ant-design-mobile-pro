@@ -2,6 +2,7 @@
   "name": "ant-design-mobile-pro",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://theprimone.top/ant-design-mobile-pro",
   "description": "Use Ant Design Mobile like And Design Pro",
   "scripts": {
     "start": "umi dev",
@@ -9,7 +10,9 @@
     "test": "umi test",
     "lint:es": "eslint --ext .js src mock tests",
     "lint:ts": "tslint \"src/**/*.ts\" \"src/**/*.tsx\"",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "antd-mobile": "^2.3.1",
@@ -41,6 +44,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.11.1",
+    "gh-pages": "^2.1.1",
     "husky": "^0.14.3",
     "lint-staged": "^7.2.2",
     "postcss-px-to-viewport": "^1.1.1",
@@ -50,6 +54,7 @@
     "tslint-eslint-rules": "^5.4.0",
     "tslint-react": "^3.6.0",
     "umi": "^2.7.0",
+    "umi-plugin-gh-pages": "^0.2.0",
     "umi-plugin-react": "^1.8.0",
     "umi-types": "^0.3.0"
   },
