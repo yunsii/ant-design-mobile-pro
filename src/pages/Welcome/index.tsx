@@ -9,11 +9,6 @@ import CustomIcon from '@/components/CustomIcon';
 import { Dispatch } from '@/models/connect';
 import styles from './index.less';
 
-// const data = Array.from(new Array(9)).map((_val, i) => ({
-//   icon: 'https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png',
-//   text: `name${i}`,
-// }));
-
 const MenuIcon = (props) => {
   const { type, color } = props;
   return <CustomIcon type={type.split('-')[1]} size={60} style={{ color }} />
@@ -118,24 +113,11 @@ export interface CenterProps {
 }
 
 class Welcome extends React.PureComponent<CenterProps> {
-  state = {
-    data: ['1', '2', '3'],
-  }
-
-  componentDidMount() {
-    // simulate img loading
-    setTimeout(() => {
-      this.setState({
-        data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
-      });
-    }, 100);
-  }
-
   handleExit = () => {
     const { dispatch } = this.props;
     dispatch({
       type: 'login/logout',
-    })
+    });
   }
 
   handleClick = (item) => {
