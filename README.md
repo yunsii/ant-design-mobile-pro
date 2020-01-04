@@ -2,11 +2,13 @@
 
 <div align="center">
 
-像 [Ant Design Pro](https://github.com/ant-design/ant-design-pro) 一样使用 Ant Design Mobile。[Preview ->](https://theprimone.github.io/ant-design-mobile-pro)
+像 [Ant Design Pro](https://github.com/ant-design/ant-design-pro) 一样使用 Ant Design Mobile。
 
 </div>
 
 ![ant-deisgn-mobile-pro-puzzle-min.png](https://i.loli.net/2019/12/20/6nMpEzVkIruC15Y.png)
+
+在线预览，请[猛戳这里](https://theprimone.github.io/ant-design-mobile-pro)。接口报错可以忽略。
 
 ## 已有特性
 
