@@ -2,7 +2,7 @@
 
 <div align="center">
 
-像 [Ant Design Pro](https://github.com/ant-design/ant-design-pro) 一样使用 Ant Design Mobile。
+像 [Ant Design Pro](https://github.com/ant-design/ant-design-pro) 一样使用 Ant Design Mobile。[Preview ->](https://theprimone.github.io/ant-design-mobile-pro)
 
 </div>
 
