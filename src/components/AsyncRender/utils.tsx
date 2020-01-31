@@ -10,21 +10,23 @@ export function isEmptyData<T>(data: T) {
 }
 
 export const Loading: React.FC<{}> = () => {
-  const [dotNums, setDotNums] = useState(0);
-  const dots = 3;
+  const [dotsNo, setDotsNo] = useState(0);
+  const dotsLength = 3;
 
   useEffect(() => {
     const setDotNumsInterval = setInterval(() => {
-      setDotNums(dotNums + 1);
+      setDotsNo((dotsNo + 1) % (dotsLength + 1));
     }, 333);
 
     return () => { clearInterval(setDotNumsInterval); }
-  }, [dotNums]);
+  }, [dotsNo]);
 
   return (
     <p style={{ margin: 0 }}>
-      {`加载中${_repeat('.', dotNums % (dots + 1))}`}
-      <span style={{ color: 'transparent' }}>{`${_repeat('.', (dots + 1) - (dotNums % (dots + 1)))}`}</span>
+      {`加载中${_repeat('.', dotsNo)}`}
+      <span style={{ color: 'transparent' }}>
+        {`${_repeat('.', (dotsLength + 1) - dotsNo)}`}
+      </span>
     </p>
   )
 }
