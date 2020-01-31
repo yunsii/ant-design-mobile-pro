@@ -133,7 +133,7 @@ class FormDemo extends React.PureComponent<any> {
         <WhiteSpace size='lg' />
         <WingBlank>
           <Paper>
-            <AsyncRenderWithFetch getData={async () => (await getMockData(1, { wait: 600 })).list}>
+            <AsyncRenderWithFetch getData={async () => (await getMockData(1, { wait: 2400 })).list}>
               {(data) => {
                 return data.slice(0, 3).map(item => {
                   return <Description key={item.id} label={item.title}>{item.desc}</Description>
