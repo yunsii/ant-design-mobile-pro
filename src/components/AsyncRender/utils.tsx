@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import CustomResult from '@/components/custom-antd-mobile/CustomResult';
 import _repeat from 'lodash/repeat';
 import _isFunction from 'lodash/isFunction';
-import styles from './utils.less';
 
 export function isEmptyData<T>(data: T) {
   const isEmptyArray = Array.isArray(data) && !data.length;
@@ -33,10 +32,10 @@ export const Loading: React.FC<{}> = () => {
 
 export function checkAndRender<T>(loading: boolean, data: T) {
   if (loading) {
-    return <CustomResult className={styles.result} message={<Loading />} />;
+    return <CustomResult message={<Loading />} />;
   }
   if (isEmptyData(data)) {
-    return <CustomResult className={styles.result} message='暂无数据' />;
+    return <CustomResult message='暂无数据' />;
   }
   return null;
 }
