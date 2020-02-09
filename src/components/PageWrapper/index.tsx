@@ -57,11 +57,7 @@ export default function PageWrapper(props: PageWrapperProps) {
         </Drawer>
       )
     }
-    return fixed ?
-      <div className={styles.fixedContent}>
-        {children}
-      </div> :
-      children
+    return fixed ? <div className={styles.fixedContent}>{children}</div> : children;
   }
 
   return (
@@ -70,7 +66,7 @@ export default function PageWrapper(props: PageWrapperProps) {
         mode="dark"
         {...backableConfig}
         {...drawerConfig}
-        className={classNames(fixed ? styles.fixed : '', className)}
+        className={classNames(fixed && styles.fixed, className)}
         {...rest}
       >
         {title}
