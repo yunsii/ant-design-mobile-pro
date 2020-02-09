@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Switch, WingBlank, WhiteSpace, Grid } from 'antd-mobile';
+import { Grid } from 'antd-mobile';
 import PageWrapper from '@/components/PageWrapper';
 import CustomIcon from '@/components/CustomIcon';
 import Avatar from '@/components/Avatar';
