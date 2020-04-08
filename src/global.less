@@ -13,7 +13,7 @@ body {
   margin: 0;
 
   /* IOS 禁止微信调整字体大小 */
-	-webkit-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 
   * {
     box-sizing: border-box;
@@ -38,4 +38,14 @@ body {
   right: 0;
   opacity: 0;
   transition: opacity 250ms ease-in;
+}
+
+// 默认 iconfont 样式
+.icon {
+  width: @icon-size-xs;
+  height: @icon-size-xs;
+  vertical-align: -0.15 * @icon-size-xs;
+  fill: currentColor;
+  overflow: hidden;
+  color: @brand-primary;
 }
