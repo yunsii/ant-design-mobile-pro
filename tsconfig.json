@@ -12,7 +12,8 @@
     "allowJs": true,
     "noEmit": true,
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@@/*": ["src/.umi/*"]
     },
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,

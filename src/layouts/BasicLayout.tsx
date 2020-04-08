@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-import router from 'umi/router';
-import withRouter from 'umi/withRouter';
+import { history, withRouter } from 'umi';
 import { connect } from 'dva';
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { Dispatch, ConnectState } from '@/models/connect';
 import { getAuthority } from '@/utils/authority';
 // import { formatMessage } from 'umi-plugin-react/locale';
@@ -16,7 +15,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
   const { dispatch, children, location } = props;
   useEffect(() => {
     if (getAuthority()[0] !== 'admin') {
-      router.push('/user/login');
+      history.push('/user/login');
     }
     if (dispatch) {
       dispatch({

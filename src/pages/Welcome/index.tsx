@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'dva';
-import router from 'umi/router';
+import { history } from 'umi';
 import { Grid, Button, Flex } from 'antd-mobile';
 import Avatar from '@/components/Avatar';
 import Paper from '@/components/Paper';
@@ -9,20 +9,19 @@ import CustomIcon from '@/components/CustomIcon';
 import { Dispatch } from '@/models/connect';
 import styles from './index.less';
 
-const MenuIcon = (props) => {
+const MenuIcon = props => {
   const { type, color } = props;
-  return <CustomIcon type={type.split('-')[1]} size={60} style={{ color }} />
-}
+  return <CustomIcon type={type.split('-')[1]} size={60} style={{ color }} />;
+};
 
 const statistics = [
   {
     key: 'all',
     title: (
       <Fragment>
-        <MenuIcon type='icon-all' color='#3aceee' /><br />
-        <p>
-          总数量
-        </p>
+        <MenuIcon type='icon-all' color='#3aceee' />
+        <br />
+        <p>总数量</p>
       </Fragment>
     ),
     value: 45,
@@ -32,10 +31,9 @@ const statistics = [
     key: 'lack',
     title: (
       <Fragment>
-        <MenuIcon type='icon-empty' color='#3aceee' /><br />
-        <p>
-          －－－－
-        </p>
+        <MenuIcon type='icon-empty' color='#3aceee' />
+        <br />
+        <p>－－－－</p>
       </Fragment>
     ),
     value: 12,
@@ -45,10 +43,9 @@ const statistics = [
     key: 'online',
     title: (
       <Fragment>
-        <MenuIcon type='icon-empty' color='#3aceee' /><br />
-        <p>
-          －－－－
-        </p>
+        <MenuIcon type='icon-empty' color='#3aceee' />
+        <br />
+        <p>－－－－</p>
       </Fragment>
     ),
     value: 2,
@@ -58,22 +55,21 @@ const statistics = [
     key: 'offline',
     title: (
       <Fragment>
-        <MenuIcon type='icon-empty' color='#3aceee' /><br />
-        <p>
-          －－－－
-        </p>
+        <MenuIcon type='icon-empty' color='#3aceee' />
+        <br />
+        <p>－－－－</p>
       </Fragment>
     ),
     value: 18,
     align: 'center',
   },
-]
+];
 
 const menuItems = [
   {
     icon: <MenuIcon type='icon-list' color='#f37a3f' />,
     text: '长列表',
-    link: '/demo/standard-list'
+    link: '/demo/standard-list',
   },
   {
     icon: <MenuIcon type='icon-form' color='#4fdde6' />,
@@ -118,13 +114,13 @@ class Welcome extends React.PureComponent<CenterProps> {
     dispatch({
       type: 'login/logout',
     });
-  }
+  };
 
-  handleClick = (item) => {
+  handleClick = item => {
     if (item.link) {
-      router.push(item.link);
+      history.push(item.link);
     }
-  }
+  };
 
   render() {
     return (
@@ -139,28 +135,34 @@ class Welcome extends React.PureComponent<CenterProps> {
             />
             <span className={styles.username}>admin</span>
             <span className={styles.lastLogin}>2019-8-14 09:47:07</span>
-            <Button inline className={styles.updatePassword}>修改密码</Button>
-            <Button inline className={styles.exit} onClick={this.handleExit}>退出</Button>
+            <Button inline className={styles.updatePassword}>
+              修改密码
+            </Button>
+            <Button inline className={styles.exit} onClick={this.handleExit}>
+              退出
+            </Button>
           </div>
         </header>
         <div className={styles.monitor}>
           <Paper clearPadding>
             <Flex justify='center' style={{ width: '100%', height: '100%', margin: '.2rem 0' }}>
-              {statistics.map((item) => {
+              {statistics.map(item => {
                 return (
                   <Flex.Item key={item.key}>
-                    <Statistics
-                      title={item.title}
-                      value={item.value}
-                      align={item.align}
-                    />
+                    <Statistics title={item.title} value={item.value} align={item.align} />
                   </Flex.Item>
-                )
+                );
               })}
             </Flex>
           </Paper>
         </div>
-        <Grid className={styles.menu} data={menuItems} hasLine={false} columnNum={3} onClick={this.handleClick} />
+        <Grid
+          className={styles.menu}
+          data={menuItems}
+          hasLine={false}
+          columnNum={3}
+          onClick={this.handleClick}
+        />
       </div>
     );
   }

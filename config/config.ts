@@ -1,38 +1,9 @@
-import { IConfig, IPlugin } from 'umi-types';
 import pageRoutes from './router.config';
 import webpackPlugin from './plugin.config';
 import pxToViewPort from 'postcss-px-to-viewport';
 const defaultSettings = require('../src/defaultSettings');
 
 const { base, publicPath } = defaultSettings;
-
-// ref: https://umijs.org/config/
-const plugins: IPlugin[] = [
-  // ref: https://umijs.org/plugin/umi-plugin-react.html
-  ['umi-plugin-react', {
-    antd: false,
-    dva: true,
-    dynamicImport: {
-      loadingComponent: './components/PageLoading/index',
-      webpackChunkName: true,
-    },
-    title: 'ant-design-mobile-pro',
-    dll: false,
-    locale: {
-      enable: true,
-      default: 'en-US',
-    },
-    routes: {
-      exclude: [
-        /models\//,
-        /services\//,
-        /model\.(t|j)sx?$/,
-        /service\.(t|j)sx?$/,
-        /components\//,
-      ],
-    },
-  }],
-];
 
 export default {
   // code split need base url
@@ -41,8 +12,20 @@ export default {
   define: {
     APP_TYPE: process.env.APP_TYPE || '',
   },
-  history: 'browser', // 默认是 browser
-  plugins,
+
+  antd: false,
+  dva: {
+    immer: true,
+    hmr: false,
+  },
+  dynamicImport: {
+    loading: '@/components/PageLoading/index',
+  },
+  title: 'ant-design-mobile-pro',
+  locale: {
+    default: 'zh-CN',
+  },
+
   //   exportStatic: {},
   // 路由配置
   routes: pageRoutes,
@@ -53,7 +36,7 @@ export default {
   //   'brand-primary-tap': theme.brandPrimaryTap,
   // },
   externals: {},
-  lessLoaderOptions: {
+  lessLoader: {
     javascriptEnabled: true,
   },
   cssnano: {
@@ -89,11 +72,14 @@ export default {
   hash: true,
   chainWebpack: webpackPlugin,
   extraBabelPlugins: [
-    ['import', {
-      libraryName: 'antd-mobile',
-      //style: 'css',
-      style: true, // use less for customized theme
-    }],
+    [
+      'import',
+      {
+        libraryName: 'antd-mobile',
+        //style: 'css',
+        style: true, // use less for customized theme
+      },
+    ],
   ],
   // reference: https://umijs.org/zh/config/#extrapostcssplugins
   extraPostCSSPlugins: [
@@ -104,8 +90,8 @@ export default {
     }),
   ],
   theme: {
-    'hd': '2px',
+    hd: '2px',
     // 'brand-primary': '',
     // 'brand-primary-tap': '',
   },
-} as IConfig;
+};
